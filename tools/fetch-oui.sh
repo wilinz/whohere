@@ -5,12 +5,16 @@ set -eu
 DST="${1:-pkg/whohere/data/usr/share/whohere/oui.txt}"
 # GNU mktemp 的 -t 模板必须带 X(BSD 不需要), 直接给完整模板, 两边都认
 TMP="$(mktemp "${TMPDIR:-/tmp}/whohere-oui.XXXXXX")"
+# IEEE 站点经常连不上(CI 上尤其), 所以带重试, 并把 GitHub 上的镜像
+# (同一份 oui.txt, 格式一致)排在后面兜底。
 URLS="https://standards-oui.ieee.org/oui/oui.txt
-http://standards-oui.ieee.org/oui/oui.txt"
+http://standards-oui.ieee.org/oui/oui.txt
+https://raw.githubusercontent.com/silverwind/oui/master/oui.txt"
 
 got=0
 for u in $URLS; do
-	if curl -fsSL --connect-timeout 20 --max-time 300 -o "$TMP" "$u" && [ -s "$TMP" ]; then
+	if curl -fsSL --retry 3 --retry-all-errors --retry-delay 5 \
+		--connect-timeout 20 --max-time 300 -o "$TMP" "$u" && [ -s "$TMP" ]; then
 		got=1; break
 	fi
 	echo "  拉取失败, 换下一个源: $u" >&2
