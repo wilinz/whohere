@@ -1,42 +1,22 @@
 #!/bin/sh
-# 构建期抓取 IEEE 官方 OUI 登记表, 转成紧凑格式打进包里, 保证开箱即用。
-# 装到路由器上之后, 用户还能用 update-oui.sh / LuCI 按钮 / 定时任务再更新。
+# 构建期取 OUI 厂商库, 打进 ipk 里, 保证开箱即用。
+#
+# 只从本仓库的 oui 分支拉 —— 那份由 .github/workflows/oui.yml 每 3 天从 IEEE
+# 抓一次并转成紧凑格式。构建不碰 IEEE 官网: 它时不时连不上, 之前几次 release
+# 就是被它拖挂的; 抓不动的风险集中在那一条定时任务里, 挂了也不影响发版。
+# 分支上只存 gz(2M -> 380K), 这里解开再打包, 引擎读的是明文表。
 set -eu
 DST="${1:-pkg/whohere/data/usr/share/whohere/oui.txt}"
-# GNU mktemp 的 -t 模板必须带 X(BSD 不需要), 直接给完整模板, 两边都认
-TMP="$(mktemp "${TMPDIR:-/tmp}/whohere-oui.XXXXXX")"
-# IEEE 站点经常连不上(CI 上尤其), 所以带重试, 并把 GitHub 上的镜像
-# (同一份 oui.txt, 格式一致)排在后面兜底。
-URLS="https://standards-oui.ieee.org/oui/oui.txt
-http://standards-oui.ieee.org/oui/oui.txt
-https://raw.githubusercontent.com/silverwind/oui/master/oui.txt"
+SRC="${OUI_URL:-https://raw.githubusercontent.com/wilinz/whohere/oui/oui.txt.gz}"
+TMP="$(mktemp "${TMPDIR:-/tmp}/whohere-oui.XXXXXX")"   # GNU mktemp 的模板必须带 X
+mkdir -p "$(dirname "$DST")"
 
-got=0
-for u in $URLS; do
-	if curl -fsSL --retry 3 --retry-all-errors --retry-delay 5 \
-		--connect-timeout 20 --max-time 300 -o "$TMP" "$u" && [ -s "$TMP" ]; then
-		got=1; break
-	fi
-	echo "  拉取失败, 换下一个源: $u" >&2
-done
-[ "$got" = 1 ] || { echo "无法获取 IEEE OUI 表" >&2; rm -f "$TMP"; exit 1; }
+curl -fsSL --retry 3 --retry-connrefused --retry-delay 3 \
+	--connect-timeout 20 --max-time 300 -o "$TMP" "$SRC" \
+	|| { echo "拉不到 OUI 表: $SRC" >&2; rm -f "$TMP"; exit 1; }
 
-{
-	echo "# IEEE OUI registry, 由 tools/fetch-oui.sh 于 $(date -u +%Y-%m-%d) 转换"
-	echo "# 格式: <6位十六进制前缀>\t<厂商名>"
-	# 行长这样:  28-6F-B9     (hex)\t\tNokia Shanghai Bell Co., Ltd.
-	# 注意 split 的第三个参数是正则, 不能直接写 "(hex)" —— 那会被当成捕获组
-	# 只匹配 hex 三个字母, 前缀里会多留一个左括号。直接按 "(" 截断最稳。
-	awk -F'\t' '/\(hex\)/ {
-		p = substr($1, 1, index($1, "(") - 1)
-		gsub(/[^0-9A-Fa-f]/, "", p)
-		name = $NF
-		gsub(/^[ \t]+|[ \t\r]+$/, "", name)
-		if (length(p) == 6 && name != "") print tolower(p) "\t" name
-	}' "$TMP" | sort -u
-} > "$DST"
-
+gzip -dc "$TMP" > "$DST" || { echo "解压失败: $SRC" >&2; rm -f "$TMP"; exit 1; }
 rm -f "$TMP"
 n=$(grep -c "	" "$DST" || true)
 echo "  OUI: $n 条 -> $DST ($(du -h "$DST" | cut -f1))"
-[ "$n" -gt 20000 ] || { echo "条目数异常偏少, 可能是源格式变了" >&2; exit 1; }
+[ "$n" -gt 20000 ] || { echo "条目数异常偏少, oui 分支的数据可能有问题" >&2; exit 1; }

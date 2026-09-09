@@ -1,0 +1,59 @@
+# 每 3 天从 IEEE 抓一次 OUI 登记表, 转成紧凑格式提交到 oui 分支。
+#
+# 数据和构建分开: release 只从 oui 分支拿现成的表(见 tools/fetch-oui.sh),
+# IEEE 官网抽风只会让这条定时任务失败一次, 下次再跑, 发版不受影响。
+# 定时任务只在默认分支上的 workflow 才会触发, 所以文件放 main, 数据放 oui。
+name: oui
+
+on:
+  schedule:
+    - cron: '17 3 */3 * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch IEEE OUI registry
+        run: |
+          curl -fsSL --retry 5 --retry-connrefused --retry-delay 10 \
+            --connect-timeout 30 --max-time 600 -o /tmp/oui-raw.txt \
+            https://standards-oui.ieee.org/oui/oui.txt
+          ./tools/oui-convert.awk /tmp/oui-raw.txt > /tmp/oui.txt
+          n=$(grep -c "$(printf '\t')" /tmp/oui.txt)
+          echo "解析出 $n 条"
+          [ "$n" -gt 20000 ] || { echo "条目数异常偏少, IEEE 格式可能变了"; exit 1; }
+          # 分支上只存 gz: 2M -> 380K, 路由器拉更新也省流量。-n 不写时间戳,
+          # 内容没变时字节也不变, 不会平白产生一次提交
+          gzip -9n -c /tmp/oui.txt > /tmp/oui.txt.gz
+
+      - name: Commit to oui branch
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          # oui 分支是孤儿分支, 只有数据, 不含代码历史
+          git fetch origin oui --depth 1 && git checkout oui || git checkout --orphan oui
+          git rm -rq --cached . 2>/dev/null || true
+          find . -maxdepth 1 ! -name . ! -name .git -exec rm -rf {} +
+          cp /tmp/oui.txt.gz oui.txt.gz
+          cat > README.md <<'EOF'
+          # oui 分支
+
+          IEEE OUI 登记表的紧凑快照 `oui.txt.gz`，解开是
+          `<6位十六进制前缀><TAB><厂商名>` 一行一条，
+          由 `main` 分支上的 `.github/workflows/oui.yml` 每 3 天自动刷新。
+
+          - 构建期：`tools/fetch-oui.sh` 从这里取，打进 ipk。
+          - 路由器上：`update-oui.sh` / LuCI 的「更新 OUI 库」按钮也从这里取。
+
+          直链：`https://raw.githubusercontent.com/wilinz/whohere/oui/oui.txt.gz`
+          EOF
+          git add -A
+          git diff --cached --quiet && { echo "无变化, 不提交"; exit 0; }
+          git commit -m "oui: 刷新 IEEE OUI 快照 ($(date -u +%Y-%m-%d))"
+          git push origin oui

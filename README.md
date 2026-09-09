@@ -28,7 +28,12 @@ opkg install whohere_*_<你的架构>.ipk luci-app-whohere_*_all.ipk
 架构用 `opkg print-architecture` 查。二进制是静态 musl，同 CPU 家族可加 `--force-architecture`。
 界面在 **服务 → WhoHere**。
 
-装完即用：IEEE OUI 厂商库（4 万条）在构建时就打进包里了，不需要联网初始化。
+装完即用：OUI 厂商库（4 万条）在构建时就打进包里了，不需要联网初始化。
+这张表存在本仓库的 [`oui` 分支](https://github.com/wilinz/whohere/tree/oui)（压缩版 `oui.txt.gz`），
+由 CI 每 3 天从 IEEE 刷新一次；构建和路由器上的「更新 OUI 库」按钮都从这里拉，
+不直连时好时坏的 IEEE 官网。
+表存在本仓库的 [`oui` 分支](https://github.com/wilinz/whohere/tree/oui)，由 CI 每 3 天从 IEEE 刷新一次；
+路由器上的「更新 OUI 库」按钮拉的也是这一份，不用直连 IEEE 官网。
 
 ## 它是怎么工作的
 
@@ -145,7 +150,7 @@ DHCP 指纹想要大规模覆盖，可以对着 [Fingerbank](https://fingerbank.
 ## 构建
 
 ```sh
-./tools/fetch-oui.sh                                    # 拉 IEEE OUI 表(构建期一次)
+./tools/fetch-oui.sh                                    # 从 oui 分支取 OUI 表(构建期一次)
 TARGET=x86_64-unknown-linux-musl ARCH=x86_64 ./build.sh
 ```
 
