@@ -21,9 +21,24 @@ jobs:
 
       - name: Fetch IEEE OUI registry
         run: |
-          curl -fsSL --retry 5 --retry-connrefused --retry-delay 10 \
-            --connect-timeout 30 --max-time 600 -o /tmp/oui-raw.txt \
-            https://standards-oui.ieee.org/oui/oui.txt
+          # IEEE 挂掉时 curl 报的是 (7) Failed to connect —— 这个错 curl 默认
+          # 不算 transient, 光有 --retry/--retry-connrefused 不会重试, 必须
+          # --retry-all-errors。再套一层 https -> http 的轮换, 一共试 3 轮。
+          get() {
+            curl -fsSL --retry 5 --retry-all-errors --retry-delay 15 \
+              --connect-timeout 30 --max-time 600 -o /tmp/oui-raw.txt "$1" \
+              && [ -s /tmp/oui-raw.txt ]
+          }
+          ok=0
+          for round in 1 2 3; do
+            for u in https://standards-oui.ieee.org/oui/oui.txt \
+                     http://standards-oui.ieee.org/oui/oui.txt; do
+              if get "$u"; then ok=1; break 2; fi
+              echo "第 $round 轮失败: $u"
+            done
+            sleep 60
+          done
+          [ "$ok" = 1 ] || { echo "IEEE 连不上, 这轮放弃, 3 天后再来"; exit 1; }
           ./tools/oui-convert.awk /tmp/oui-raw.txt > /tmp/oui.txt
           n=$(grep -c "$(printf '\t')" /tmp/oui.txt)
           echo "解析出 $n 条"

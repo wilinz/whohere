@@ -11,7 +11,7 @@ SRC="${OUI_URL:-https://raw.githubusercontent.com/wilinz/whohere/oui/oui.txt.gz}
 TMP="$(mktemp "${TMPDIR:-/tmp}/whohere-oui.XXXXXX")"   # GNU mktemp 的模板必须带 X
 mkdir -p "$(dirname "$DST")"
 
-curl -fsSL --retry 3 --retry-connrefused --retry-delay 3 \
+curl -fsSL --retry 3 --retry-all-errors --retry-delay 3 \
 	--connect-timeout 20 --max-time 300 -o "$TMP" "$SRC" \
 	|| { echo "拉不到 OUI 表: $SRC" >&2; rm -f "$TMP"; exit 1; }
 
