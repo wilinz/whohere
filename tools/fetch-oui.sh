@@ -3,7 +3,8 @@
 # 装到路由器上之后, 用户还能用 update-oui.sh / LuCI 按钮 / 定时任务再更新。
 set -eu
 DST="${1:-pkg/whohere/data/usr/share/whohere/oui.txt}"
-TMP="$(mktemp -t whohere-oui)"
+# GNU mktemp 的 -t 模板必须带 X(BSD 不需要), 直接给完整模板, 两边都认
+TMP="$(mktemp "${TMPDIR:-/tmp}/whohere-oui.XXXXXX")"
 URLS="https://standards-oui.ieee.org/oui/oui.txt
 http://standards-oui.ieee.org/oui/oui.txt"
 
