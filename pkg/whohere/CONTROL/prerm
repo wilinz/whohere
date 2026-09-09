@@ -1,0 +1,8 @@
+#!/bin/sh
+[ -n "$IPKG_INSTROOT" ] || {
+	# 还原被我们改过的 dnsmasq 配置, 清掉防火墙规则
+	. /etc/init.d/whohere 2>/dev/null && cleanup 2>/dev/null
+	/etc/init.d/whohere stop 2>/dev/null
+	/etc/init.d/whohere disable 2>/dev/null
+}
+exit 0

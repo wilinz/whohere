@@ -1,0 +1,11 @@
+{
+	"admin/services/whohere": {
+		"title": "WhoHere",
+		"order": 61,
+		"action": { "type": "view", "path": "whohere/main" },
+		"depends": {
+			"acl": [ "luci-app-whohere" ],
+			"uci": { "whohere": true }
+		}
+	}
+}

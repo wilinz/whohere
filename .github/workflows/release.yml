@@ -1,0 +1,124 @@
+name: release
+
+on:
+  push:
+    tags: [ 'v*' ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # arch=opkg 架构; target=rust 目标; rustup_target=需 rustup 装的目标(build-std 目标留空)
+          # toolchain=stable/nightly; buildstd=是否 -Z build-std; luci=是否顺带打 LuCI; experimental=允许失败
+          - { arch: x86_64,                  target: x86_64-unknown-linux-musl,      rustup_target: x86_64-unknown-linux-musl,      toolchain: stable,  buildstd: '0', luci: '1', experimental: false }
+          - { arch: i386_pentium4,           target: i686-unknown-linux-musl,        rustup_target: i686-unknown-linux-musl,        toolchain: stable,  buildstd: '0', luci: '0', experimental: false }
+          - { arch: riscv64_riscv64,         target: riscv64gc-unknown-linux-musl,   rustup_target: riscv64gc-unknown-linux-musl,   toolchain: stable,  buildstd: '0', luci: '0', experimental: false }
+          - { arch: aarch64_generic,         target: aarch64-unknown-linux-musl,     rustup_target: aarch64-unknown-linux-musl,     toolchain: stable,  buildstd: '0', luci: '0', experimental: false }
+          - { arch: aarch64_cortex-a53,      target: aarch64-unknown-linux-musl,     rustup_target: aarch64-unknown-linux-musl,     toolchain: stable,  buildstd: '0', luci: '0', experimental: false }
+          - { arch: aarch64_cortex-a72,      target: aarch64-unknown-linux-musl,     rustup_target: aarch64-unknown-linux-musl,     toolchain: stable,  buildstd: '0', luci: '0', experimental: false }
+          - { arch: arm_cortex-a7_neon-vfpv4,  target: armv7-unknown-linux-musleabihf, rustup_target: armv7-unknown-linux-musleabihf, toolchain: stable,  buildstd: '0', luci: '0', experimental: false }
+          - { arch: arm_cortex-a9_vfpv3-d16,   target: armv7-unknown-linux-musleabihf, rustup_target: armv7-unknown-linux-musleabihf, toolchain: stable,  buildstd: '0', luci: '0', experimental: false }
+          - { arch: arm_cortex-a15_neon-vfpv4, target: armv7-unknown-linux-musleabihf, rustup_target: armv7-unknown-linux-musleabihf, toolchain: stable,  buildstd: '0', luci: '0', experimental: false }
+          # tier-3 (MediaTek MT7621 / ath79): nightly + build-std, best-effort
+          - { arch: mipsel_24kc,             target: mipsel-unknown-linux-musl,      rustup_target: '',                             toolchain: nightly, buildstd: '1', luci: '0', czb: '0.22.3', experimental: true }
+          - { arch: mips_24kc,               target: mips-unknown-linux-musl,        rustup_target: '',                             toolchain: nightly, buildstd: '1', luci: '0', czb: '0.22.3', experimental: true }
+          # mips64 (Cavium Octeon, N64, 大端): 不走 cargo-zigbuild(它发 zig 不认的
+          # muslabi64), build.sh 内按 muslabi64 后缀改用裸 zig cc 链接
+          - { arch: mips64_octeonplus,       target: mips64-unknown-linux-muslabi64, rustup_target: '',                             toolchain: nightly, buildstd: '1', luci: '0', experimental: true }
+          - { arch: mips64el_generic,        target: mips64el-unknown-linux-muslabi64, rustup_target: '',                           toolchain: nightly, buildstd: '1', luci: '0', experimental: true }
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Derive version from tag
+        id: ver
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          targets: ${{ matrix.rustup_target }}
+          components: ${{ matrix.buildstd == '1' && 'rust-src' || '' }}
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: whohere-rs
+
+      - name: Install zig
+        uses: mlugg/setup-zig@v1
+        with:
+          version: 0.13.0
+
+      - name: Install cargo-zigbuild
+        # 版本按 job 分流(matrix.czb):
+        #  - mips: 钉 0.22.3, 它把 mips musl 映射成 zig 0.13 认得的 `mipsel-linux-musl`;
+        #    新版(0.23.x)发 `...-musleabi`, 与 zig 0.13 对不上, mips 链接失败。
+        #  - 其余架构: 用最新版; 0.22.3 不会剥离 aarch64 的 --fix-cortex-a53-843419
+        #    勘误链接参数, 会把 aarch64 链接搞挂, 所以稳定架构不能降级。
+        run: |
+          if [ -n "${{ matrix.czb }}" ]; then
+            cargo install cargo-zigbuild --version "${{ matrix.czb }}" --locked
+          else
+            cargo install cargo-zigbuild --locked
+          fi
+
+      - name: Fetch IEEE OUI database
+        run: ./tools/fetch-oui.sh
+
+      - name: Build ipk(s)
+        env:
+          TARGET: ${{ matrix.target }}
+          ARCH: ${{ matrix.arch }}
+          VERSION: ${{ steps.ver.outputs.version }}
+          BUILDSTD: ${{ matrix.buildstd }}
+          BUILD_ENGINE: '1'
+          BUILD_LUCI: ${{ matrix.luci }}
+        run: ./build.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ipk-${{ matrix.arch }}
+          path: out/*.ipk
+          if-no-files-found: error
+
+  release:
+    needs: build
+    if: ${{ always() && startsWith(github.ref, 'refs/tags/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: List artifacts
+        run: ls -la dist
+
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.ipk
+          generate_release_notes: true
+          body: |
+            whohere — OpenWrt 局域网设备清点与指纹识别 (DHCP 指纹 / mDNS / DNS / OUI)。
+
+            按路由器架构下载对应的 `whohere_*_<arch>.ipk`，再配一份架构无关的
+            `luci-app-whohere_*_all.ipk` 一起安装：
+
+            ```sh
+            opkg install whohere_*_<你的架构>.ipk luci-app-whohere_*_all.ipk
+            ```
+
+            用 `opkg print-architecture` 查看架构；若架构名不完全匹配可加
+            `--force-architecture`（二进制为静态 musl，兼容同 CPU 家族）。
+
+            > mips/mipsel（如 MT7621、ath79）为 tier-3 目标，属实验性构建，可能缺席。

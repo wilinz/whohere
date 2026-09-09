@@ -1,0 +1,51 @@
+config whohere 'global'
+	option enabled '1'
+
+	# ---- DNS 这一路(辅助信号) ----
+	# auto | dnsmasq_log | singbox_log | dnstap | off
+	# 注意: dnsmasq 至今不支持 dnstap, dnstap 只对 unbound/smartdns 之类有意义。
+	option dns_source 'auto'
+	# 必须放 tmpfs。原始日志读完即截断, 只有命中的规则 id 会被留下。
+	option dns_log '/tmp/whohere-dns.log'
+	option dns_log_max_kb '2048'
+	option singbox_log '/var/log/sing-box.log'
+	option dnstap_socket '/tmp/whohere-dnstap.sock'
+	# 由本包接管 dnsmasq 的 logqueries/logfacility 布线; 卸载时会还原
+	option manage_dnsmasq '1'
+
+	# ---- 其余三路信号 ----
+	option dhcp_fingerprint '1'
+	option mdns '1'
+	# 被动抓包: TCP 栈指纹 / TLS SNI / 明文 HTTP Host
+	option sniff '1'
+	# 从 conntrack 读长连接对端: 专治只挂长连、什么都不查的 IoT 设备
+	option conns '1'
+	# 主动端口探测: 唯一会主动连客户端的一路, 只在点「立即探测」时跑
+	option port_probe '0'
+	option ssdp '1'
+
+	# ---- 存储 ----
+	# 识别结果落到可持久化分区, 重启不用重新学一遍
+	option db '/etc/whohere/devices.json'
+	option persist_interval '1800'
+	option max_age '2592000'
+	# DNS 证据半衰期(秒), 默认 7 天; 0 = 不衰减
+	option evidence_halflife '604800'
+	option oui_db '/usr/share/whohere/oui.txt'
+	# 每月自动更新一次 OUI 库(包内已预置构建时的官方快照, 这里只是保持新鲜)
+	option oui_auto_update '1'
+	option rules '/usr/share/whohere/rules.json'
+
+	# ---- 行为 ----
+	option refresh_interval '30'
+	option offline_after '600'
+	# 打开后会保留未命中的域名样本(每台最多 50 条)用于补规则。
+	# 这等于在路由器上留一份"谁访问了什么"的记录, 默认关闭。
+	option keep_unmatched '0'
+
+	# ---- 可选: 把 LAN 的 53 端口强制拉回本机 ----
+	# 只能治自设 DNS 的设备, 治不了 DoH。默认关闭。
+	option force_dns '0'
+	option force_dns_zone 'lan'
+	# 连 DoT(853) 一起挡掉, 逼设备退回明文 DNS
+	option block_dot '0'

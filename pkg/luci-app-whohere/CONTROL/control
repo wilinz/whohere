@@ -1,0 +1,9 @@
+Package: luci-app-whohere
+Version: 1.0.0
+Architecture: all
+Maintainer: wilinz
+Section: luci
+License: MIT
+Priority: optional
+Depends: luci-base, whohere, rpcd
+Description: LuCI 界面 - 局域网设备清点与品牌/系统识别

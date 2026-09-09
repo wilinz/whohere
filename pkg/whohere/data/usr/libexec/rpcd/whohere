@@ -1,0 +1,24 @@
+#!/bin/sh
+# rpcd 插件: 暴露 ubus 对象 "whohere"
+case "$1" in
+	list)
+		echo '{ "list": {}, "detail": {"mac":"str"}, "status": {}, "scan": {}, "port_probe": {}, "forget": {"mac":"str"}, "note": {"mac":"str","name":"str"}, "rules": {}, "update_oui": {} }'
+		;;
+	call)
+		read -r input
+		mac=$(echo "$input" | jsonfilter -e '@.mac' 2>/dev/null)
+		name=$(echo "$input" | jsonfilter -e '@.name' 2>/dev/null)
+		case "$2" in
+			list)       /usr/bin/whohere list ;;
+			detail)     /usr/bin/whohere detail "$mac" ;;
+			status)     /usr/bin/whohere status ;;
+			rules)      /usr/bin/whohere rules ;;
+			scan)       /usr/bin/whohere scan ;;
+			port_probe) /usr/bin/whohere probe ;;
+			forget)     /usr/bin/whohere forget "$mac" ;;
+			note)       /usr/bin/whohere note "$mac" "$name" ;;
+			update_oui) /usr/share/whohere/update-oui.sh ;;
+			*)          echo '{}' ;;
+		esac
+		;;
+esac

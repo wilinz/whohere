@@ -1,0 +1,45 @@
+#!/bin/sh
+[ -n "$IPKG_INSTROOT" ] || {
+	mkdir -p /etc/whohere
+	# 1.0.0 之前 rules.json 被误登记成 conffile, 升级时 opkg 会保留旧文件、
+	# 把新的写成 *-opkg。规则库是随包更新的数据不是用户配置, 这里把它扶正。
+	if [ -f /usr/share/whohere/rules.json-opkg ]; then
+		mv -f /usr/share/whohere/rules.json-opkg /usr/share/whohere/rules.json
+	fi
+	# /etc/config/whohere 是 conffile, 升级时 opkg 会保留用户那份 —— 新版本
+	# 加的选项不会自动出现。逐个补上缺失的键, 已有的值一律不动。
+	add_opt() {
+		[ -n "$(uci -q get whohere.global.$1)" ] || {
+			uci -q set whohere.global.$1="$2" && uci -q commit whohere
+		}
+	}
+	if uci -q get whohere.global >/dev/null 2>&1; then
+		add_opt evidence_halflife 604800
+		add_opt sniff 1
+		add_opt port_probe 0
+		add_opt conns 1
+	fi
+
+	/etc/init.d/whohere enable
+	/etc/init.d/rpcd restart 2>/dev/null
+	rm -f /tmp/luci-indexcache* /tmp/luci-*.json 2>/dev/null
+	rm -rf /tmp/luci-modulecache 2>/dev/null
+	/etc/init.d/whohere start 2>/dev/null
+	# 内置规则库随包升级会被覆盖; 自定义规则请写到本地覆盖文件里
+	[ -e /etc/whohere/rules.local.json ] || cat > /etc/whohere/rules.local.json <<'RULES'
+{
+  "_note": "本地规则覆盖。结构与 /usr/share/whohere/rules.json 相同, 这里的条目优先。升级不会动这个文件。",
+  "dns": [],
+  "hostname": [],
+  "oui_brand": []
+}
+RULES
+	[ -s /usr/share/whohere/oui.txt ] || cat <<'MSG'
+
+whohere: OUI 厂商库为空(包里不预置, 避免给出编造的厂商名)。
+         联网后执行 /usr/share/whohere/update-oui.sh 拉取 IEEE 官方表,
+         或在 LuCI 界面点「更新 OUI 库」。需要 libustream-mbedtls 支持 https。
+
+MSG
+}
+exit 0

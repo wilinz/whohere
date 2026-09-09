@@ -1,0 +1,33 @@
+{
+	"luci-app-whohere": {
+		"description": "Grant access to LAN device identification (whohere)",
+		"read": {
+			"ubus": {
+				"whohere": [
+					"list",
+					"detail",
+					"status",
+					"rules"
+				]
+			},
+			"uci": [
+				"whohere"
+			]
+		},
+		"write": {
+			"ubus": {
+				"whohere": [
+					"scan",
+					"port_probe",
+					"forget",
+					"note",
+					"update_oui"
+				]
+			},
+			"uci": [
+				"whohere",
+				"firewall"
+			]
+		}
+	}
+}

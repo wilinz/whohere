@@ -1,0 +1,11 @@
+Package: whohere
+Version: 1.0.0
+Architecture: x86_64
+Maintainer: wilinz
+Section: net
+License: MIT
+Priority: optional
+Depends: libc
+Description: 局域网设备清点与指纹识别引擎 (Rust)。融合 DHCP 指纹(opt55/opt60)、
+ mDNS/SSDP 型号串、DNS 心跳域名与 MAC OUI 四路信号, 在随机 MAC 普及后依然
+ 能认出设备的品牌、系统与类型。

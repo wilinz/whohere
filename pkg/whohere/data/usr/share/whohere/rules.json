@@ -1,0 +1,4601 @@
+{
+ "version": 1,
+ "_note": "weight 9-10=设备自动心跳(强); 6-8=厂商云服务(中); 1-3=用户可能主动访问的网页(弱, 只作噪声). kind: heartbeat|service|web",
+ "dns": [
+  {
+   "id": "apple.captive",
+   "suffix": "captive.apple.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "apple.push",
+   "suffix": "push.apple.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "apple.time",
+   "suffix": "time-ios.apple.com",
+   "brand": "Apple",
+   "os": "iOS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "apple.time2",
+   "suffix": "time.apple.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "weak",
+   "weight": 6
+  },
+  {
+   "id": "apple.mesu",
+   "suffix": "mesu.apple.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "apple.gsloc",
+   "suffix": "gs-loc.apple.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "apple.albert",
+   "suffix": "albert.apple.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "apple.xp",
+   "suffix": "xp.apple.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "apple.config",
+   "suffix": "configuration.apple.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "apple.ls",
+   "suffix": "ls.apple.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "apple.doh",
+   "suffix": "doh.dns.apple.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "apple.relay",
+   "suffix": "mask.icloud.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "apple.relay2",
+   "suffix": "mask-h2.icloud.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "apple.icloud",
+   "suffix": "icloud.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "service",
+   "weight": 6
+  },
+  {
+   "id": "apple.aaplimg",
+   "suffix": "aaplimg.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "service",
+   "weight": 6
+  },
+  {
+   "id": "apple.cdn",
+   "suffix": "cdn-apple.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "service",
+   "weight": 5
+  },
+  {
+   "id": "apple.web",
+   "suffix": "apple.com",
+   "brand": "Apple",
+   "os": "",
+   "kind": "web",
+   "weight": 2
+  },
+  {
+   "id": "goog.conncheck",
+   "suffix": "connectivitycheck.gstatic.com",
+   "brand": "",
+   "os": "Android",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "goog.conncheck2",
+   "suffix": "connectivitycheck.android.com",
+   "brand": "",
+   "os": "Android",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "goog.mtalk",
+   "suffix": "mtalk.google.com",
+   "brand": "",
+   "os": "Android",
+   "kind": "service",
+   "weight": 5
+  },
+  {
+   "id": "goog.ntp",
+   "suffix": "time.android.com",
+   "brand": "",
+   "os": "Android",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "goog.aclients",
+   "suffix": "android.clients.google.com",
+   "brand": "",
+   "os": "Android",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "goog.aapis",
+   "suffix": "android.googleapis.com",
+   "brand": "",
+   "os": "Android",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "goog.play",
+   "suffix": "play.googleapis.com",
+   "brand": "",
+   "os": "Android",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "goog.cast",
+   "suffix": "clients3.google.com",
+   "brand": "Google",
+   "os": "",
+   "kind": "service",
+   "weight": 4
+  },
+  {
+   "id": "goog.web",
+   "suffix": "google.com",
+   "brand": "",
+   "os": "",
+   "kind": "web",
+   "weight": 1
+  },
+  {
+   "id": "ms.conntest",
+   "suffix": "msftconnecttest.com",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ms.ncsi",
+   "suffix": "msftncsi.com",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ms.time",
+   "suffix": "time.windows.com",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "kind": "weak",
+   "weight": 6
+  },
+  {
+   "id": "ms.ctldl",
+   "suffix": "ctldl.windowsupdate.com",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "ms.wu",
+   "suffix": "windowsupdate.com",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "ms.settings",
+   "suffix": "settings-win.data.microsoft.com",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "ms.vortex",
+   "suffix": "vortex.data.microsoft.com",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "ms.teredo",
+   "suffix": "teredo.ipv6.microsoft.com",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "ms.dosvc",
+   "suffix": "do.dsp.mp.microsoft.com",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "ms.live",
+   "suffix": "login.live.com",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "kind": "service",
+   "weight": 4
+  },
+  {
+   "id": "ms.web",
+   "suffix": "microsoft.com",
+   "brand": "Microsoft",
+   "os": "",
+   "kind": "web",
+   "weight": 1
+  },
+  {
+   "id": "mi.push",
+   "suffix": "resolver.msg.xiaomi.net",
+   "brand": "小米",
+   "os": "MIUI/澎湃",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "mi.conn",
+   "suffix": "connect.rom.miui.com",
+   "brand": "小米",
+   "os": "MIUI/澎湃",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "mi.msg",
+   "suffix": "xiaomi.net",
+   "brand": "小米",
+   "os": "MIUI/澎湃",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "mi.miui",
+   "suffix": "miui.com",
+   "brand": "小米",
+   "os": "MIUI/澎湃",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "mi.io",
+   "suffix": "io.mi.com",
+   "brand": "小米",
+   "os": "",
+   "type": "智能家居",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "mi.pandora",
+   "suffix": "pandora.xiaomi.com",
+   "brand": "小米",
+   "os": "",
+   "type": "电视/盒子",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "mi.com",
+   "suffix": "mi.com",
+   "brand": "小米",
+   "os": "",
+   "kind": "service",
+   "weight": 6
+  },
+  {
+   "id": "mi.xiaomi",
+   "suffix": "xiaomi.com",
+   "brand": "小米",
+   "os": "",
+   "kind": "service",
+   "weight": 6
+  },
+  {
+   "id": "mi.idc",
+   "suffix": "mi-idc.com",
+   "brand": "小米",
+   "os": "",
+   "kind": "service",
+   "weight": 6
+  },
+  {
+   "id": "hw.conn",
+   "suffix": "connectivitycheck.platform.hicloud.com",
+   "brand": "华为",
+   "os": "",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "hw.push",
+   "suffix": "push.hicloud.com",
+   "brand": "华为",
+   "os": "HarmonyOS/EMUI",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "hw.hicloud",
+   "suffix": "hicloud.com",
+   "brand": "华为",
+   "os": "",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "hw.dbank",
+   "suffix": "dbankcloud.com",
+   "brand": "华为",
+   "os": "HarmonyOS/EMUI",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "hw.dbankcdn",
+   "suffix": "dbankcdn.com",
+   "brand": "华为",
+   "os": "HarmonyOS/EMUI",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "hw.test",
+   "suffix": "hwcloudtest.cn",
+   "brand": "华为",
+   "os": "",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "hw.vmall",
+   "suffix": "vmall.com",
+   "brand": "华为",
+   "os": "",
+   "kind": "web",
+   "weight": 4
+  },
+  {
+   "id": "hw.com",
+   "suffix": "huawei.com",
+   "brand": "华为",
+   "os": "",
+   "kind": "service",
+   "weight": 5
+  },
+  {
+   "id": "honor.cloud",
+   "suffix": "hihonorcloud.com",
+   "brand": "荣耀",
+   "os": "MagicOS",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "honor.com",
+   "suffix": "hihonor.com",
+   "brand": "荣耀",
+   "os": "MagicOS",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "oppo.heytap",
+   "suffix": "heytap.com",
+   "brand": "OPPO系",
+   "os": "ColorOS",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "oppo.heytapm",
+   "suffix": "heytapmobi.com",
+   "brand": "OPPO系",
+   "os": "ColorOS",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "oppo.heytapd",
+   "suffix": "heytapdownload.com",
+   "brand": "OPPO系",
+   "os": "ColorOS",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "oppo.mobile",
+   "suffix": "oppomobile.com",
+   "brand": "OPPO",
+   "os": "ColorOS",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "oppo.coloros",
+   "suffix": "coloros.com",
+   "brand": "OPPO",
+   "os": "ColorOS",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "oppo.oneplus",
+   "suffix": "oneplus.net",
+   "brand": "一加",
+   "os": "ColorOS",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "oppo.oneplus2",
+   "suffix": "oneplus.cn",
+   "brand": "一加",
+   "os": "ColorOS",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "oppo.realme",
+   "suffix": "realme.com",
+   "brand": "realme",
+   "os": "realme UI",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "vivo.cn",
+   "suffix": "vivo.com.cn",
+   "brand": "vivo",
+   "os": "OriginOS",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "vivo.global",
+   "suffix": "vivoglobal.com",
+   "brand": "vivo",
+   "os": "OriginOS",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "vivo.com",
+   "suffix": "vivo.com",
+   "brand": "vivo",
+   "os": "OriginOS",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "sam.dm",
+   "suffix": "samsungdm.com",
+   "brand": "三星",
+   "os": "One UI",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "sam.cloudsol",
+   "suffix": "samsungcloudsolution.com",
+   "brand": "三星",
+   "os": "One UI",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "sam.osp",
+   "suffix": "samsungosp.com",
+   "brand": "三星",
+   "os": "One UI",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "sam.apps",
+   "suffix": "samsungapps.com",
+   "brand": "三星",
+   "os": "One UI",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "sam.qbe",
+   "suffix": "samsungqbe.com",
+   "brand": "三星",
+   "os": "",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "sam.com",
+   "suffix": "samsung.com",
+   "brand": "三星",
+   "os": "",
+   "kind": "web",
+   "weight": 3
+  },
+  {
+   "id": "mz.flyme",
+   "suffix": "flyme.cn",
+   "brand": "魅族",
+   "os": "Flyme",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "mz.com",
+   "suffix": "meizu.com",
+   "brand": "魅族",
+   "os": "Flyme",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "zte.nubia",
+   "suffix": "nubia.com",
+   "brand": "努比亚",
+   "os": "",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "lenovo.moto",
+   "suffix": "motorola.com",
+   "brand": "摩托罗拉",
+   "os": "Android",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "lenovo.com",
+   "suffix": "lenovo.com",
+   "brand": "联想",
+   "os": "",
+   "kind": "web",
+   "weight": 4
+  },
+  {
+   "id": "sony.net",
+   "suffix": "sony.net",
+   "brand": "索尼",
+   "os": "",
+   "kind": "service",
+   "weight": 6
+  },
+  {
+   "id": "lin.ubuntu.cc",
+   "suffix": "connectivity-check.ubuntu.com",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "lin.nmcheck",
+   "suffix": "nmcheck.gnome.org",
+   "brand": "",
+   "os": "Linux",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "lin.ubuntu",
+   "suffix": "ubuntu.com",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "lin.debian",
+   "suffix": "debian.org",
+   "brand": "",
+   "os": "Debian",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "lin.arch",
+   "suffix": "archlinux.org",
+   "brand": "",
+   "os": "Arch Linux",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "lin.fedora",
+   "suffix": "fedoraproject.org",
+   "brand": "",
+   "os": "Fedora",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "lin.openwrt",
+   "suffix": "openwrt.org",
+   "brand": "",
+   "os": "OpenWrt",
+   "type": "路由器",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "lin.rpi",
+   "suffix": "raspberrypi.org",
+   "brand": "Raspberry Pi",
+   "os": "Linux",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "lin.rpi2",
+   "suffix": "raspberrypi.com",
+   "brand": "Raspberry Pi",
+   "os": "Linux",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "iot.tuya",
+   "suffix": "tuya.com",
+   "brand": "涂鸦(白牌)",
+   "os": "",
+   "type": "智能家居",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.tuyacn",
+   "suffix": "tuyacn.com",
+   "brand": "涂鸦(白牌)",
+   "os": "",
+   "type": "智能家居",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.tuyaus",
+   "suffix": "tuyaus.com",
+   "brand": "涂鸦(白牌)",
+   "os": "",
+   "type": "智能家居",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.aligenie",
+   "suffix": "aligenie.com",
+   "brand": "天猫精灵",
+   "os": "",
+   "type": "智能音箱",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.dueros",
+   "suffix": "dueros.baidu.com",
+   "brand": "小度",
+   "os": "",
+   "type": "智能音箱",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.gree",
+   "suffix": "gree.com",
+   "brand": "格力",
+   "os": "",
+   "type": "智能家电",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "iot.midea",
+   "suffix": "midea.com",
+   "brand": "美的",
+   "os": "",
+   "type": "智能家电",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "iot.haier",
+   "suffix": "haier.net",
+   "brand": "海尔",
+   "os": "",
+   "type": "智能家电",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "iot.ecovacs",
+   "suffix": "ecovacs.com",
+   "brand": "科沃斯",
+   "os": "",
+   "type": "扫地机",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.roborock",
+   "suffix": "roborock.com",
+   "brand": "石头",
+   "os": "",
+   "type": "扫地机",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.broadlink",
+   "suffix": "ibroadlink.com",
+   "brand": "博联",
+   "os": "",
+   "type": "智能家居",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.ys7",
+   "suffix": "ys7.com",
+   "brand": "海康/萤石",
+   "os": "",
+   "type": "摄像头",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.hikconn",
+   "suffix": "hik-connect.com",
+   "brand": "海康/萤石",
+   "os": "",
+   "type": "摄像头",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.easy4ip",
+   "suffix": "easy4ip.com",
+   "brand": "大华乐橙",
+   "os": "",
+   "type": "摄像头",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.tplinkcloud",
+   "suffix": "tplinkcloud.com",
+   "brand": "TP-LINK",
+   "os": "",
+   "type": "网络设备",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "iot.tplinkra",
+   "suffix": "tplinkra.com",
+   "brand": "TP-LINK",
+   "os": "",
+   "type": "网络设备",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "iot.tplink",
+   "suffix": "tp-link.com",
+   "brand": "TP-LINK",
+   "os": "",
+   "type": "网络设备",
+   "kind": "service",
+   "weight": 6
+  },
+  {
+   "id": "iot.meethue",
+   "suffix": "meethue.com",
+   "brand": "Philips Hue",
+   "os": "",
+   "type": "智能灯",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.sonos",
+   "suffix": "sonos.com",
+   "brand": "Sonos",
+   "os": "",
+   "type": "智能音箱",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.nest",
+   "suffix": "nest.com",
+   "brand": "Google Nest",
+   "os": "",
+   "type": "智能家居",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.shelly",
+   "suffix": "shelly.cloud",
+   "brand": "Shelly",
+   "os": "",
+   "type": "智能家居",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.alexa",
+   "suffix": "amazonalexa.com",
+   "brand": "Amazon",
+   "os": "",
+   "type": "智能音箱",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "iot.amzdev",
+   "suffix": "device-metrics-us.amazon.com",
+   "brand": "Amazon",
+   "os": "",
+   "type": "智能音箱",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "tv.roku",
+   "suffix": "roku.com",
+   "brand": "Roku",
+   "os": "",
+   "type": "电视/盒子",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "tv.coocaa",
+   "suffix": "coocaa.com",
+   "brand": "创维酷开",
+   "os": "",
+   "type": "电视/盒子",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "tv.hisense",
+   "suffix": "hismarttv.com",
+   "brand": "海信",
+   "os": "",
+   "type": "电视/盒子",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "tv.vidaa",
+   "suffix": "vidaa.com",
+   "brand": "海信",
+   "os": "VIDAA",
+   "type": "电视/盒子",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "game.psn",
+   "suffix": "playstation.net",
+   "brand": "PlayStation",
+   "os": "",
+   "type": "游戏机",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "game.psn2",
+   "suffix": "playstation.com",
+   "brand": "PlayStation",
+   "os": "",
+   "type": "游戏机",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "game.xbox",
+   "suffix": "xboxlive.com",
+   "brand": "Xbox",
+   "os": "",
+   "type": "游戏机",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "game.nintendo",
+   "suffix": "nintendo.net",
+   "brand": "Nintendo",
+   "os": "",
+   "type": "游戏机",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "game.steam",
+   "suffix": "steamserver.net",
+   "brand": "Steam",
+   "os": "",
+   "type": "游戏",
+   "kind": "service",
+   "weight": 5
+  },
+  {
+   "id": "prn.hp",
+   "suffix": "hpeprint.com",
+   "brand": "HP",
+   "os": "",
+   "type": "打印机",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "prn.hpc",
+   "suffix": "hpconnected.com",
+   "brand": "HP",
+   "os": "",
+   "type": "打印机",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "prn.epson",
+   "suffix": "epsonconnect.com",
+   "brand": "Epson",
+   "os": "",
+   "type": "打印机",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "car.tesla",
+   "suffix": "teslamotors.com",
+   "brand": "Tesla",
+   "os": "",
+   "type": "车机",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "ntp.pool",
+   "suffix": "pool.ntp.org",
+   "brand": "",
+   "os": "",
+   "kind": "web",
+   "weight": 1
+  },
+  {
+   "id": "ntp.android",
+   "suffix": "android.pool.ntp.org",
+   "brand": "",
+   "os": "Android",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.openwrt",
+   "suffix": "openwrt.pool.ntp.org",
+   "brand": "",
+   "os": "OpenWrt",
+   "type": "路由器",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.debian",
+   "suffix": "debian.pool.ntp.org",
+   "brand": "",
+   "os": "Debian 系",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.ubuntu",
+   "suffix": "ubuntu.pool.ntp.org",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.fedora",
+   "suffix": "fedora.pool.ntp.org",
+   "brand": "",
+   "os": "Fedora",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.centos",
+   "suffix": "centos.pool.ntp.org",
+   "brand": "",
+   "os": "CentOS/RHEL",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.rhel",
+   "suffix": "rhel.pool.ntp.org",
+   "brand": "",
+   "os": "CentOS/RHEL",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.arch",
+   "suffix": "arch.pool.ntp.org",
+   "brand": "",
+   "os": "Arch Linux",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.opensuse",
+   "suffix": "opensuse.pool.ntp.org",
+   "brand": "",
+   "os": "openSUSE",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.gentoo",
+   "suffix": "gentoo.pool.ntp.org",
+   "brand": "",
+   "os": "Gentoo",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.amazon",
+   "suffix": "amazon.pool.ntp.org",
+   "brand": "Amazon",
+   "os": "",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "ntp.synology",
+   "suffix": "synology.pool.ntp.org",
+   "brand": "群晖",
+   "os": "DSM",
+   "type": "NAS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.qnap",
+   "suffix": "qnap.pool.ntp.org",
+   "brand": "威联通",
+   "os": "QTS",
+   "type": "NAS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.asus",
+   "suffix": "asus.pool.ntp.org",
+   "brand": "华硕",
+   "os": "",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "ntp.netgear",
+   "suffix": "netgear.pool.ntp.org",
+   "brand": "NETGEAR",
+   "os": "",
+   "type": "网络设备",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "ntp.dlink",
+   "suffix": "dlink.pool.ntp.org",
+   "brand": "D-Link",
+   "os": "",
+   "type": "网络设备",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "ntp.ubnt",
+   "suffix": "ubnt.pool.ntp.org",
+   "brand": "Ubiquiti",
+   "os": "",
+   "type": "网络设备",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "ntp.xbox",
+   "suffix": "xbox.pool.ntp.org",
+   "brand": "Xbox",
+   "os": "",
+   "type": "游戏机",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.nintendo",
+   "suffix": "ntp.nintendo.net",
+   "brand": "Nintendo",
+   "os": "",
+   "type": "游戏机",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.roku",
+   "suffix": "roku.pool.ntp.org",
+   "brand": "Roku",
+   "os": "",
+   "type": "电视/盒子",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.sonos",
+   "suffix": "sonos.pool.ntp.org",
+   "brand": "Sonos",
+   "os": "",
+   "type": "智能音箱",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.tplink",
+   "suffix": "tplink.pool.ntp.org",
+   "brand": "TP-LINK",
+   "os": "",
+   "type": "网络设备",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "ntp.hikvision",
+   "suffix": "hikvision.pool.ntp.org",
+   "brand": "海康/萤石",
+   "os": "",
+   "type": "摄像头",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.espressif",
+   "suffix": "espressif.pool.ntp.org",
+   "brand": "Espressif",
+   "os": "",
+   "type": "IoT 模块",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ntp.huawei",
+   "suffix": "ntp.huawei.com",
+   "brand": "华为",
+   "os": "",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "ntp.aliyun",
+   "suffix": "ntp.aliyun.com",
+   "brand": "",
+   "os": "",
+   "kind": "heartbeat",
+   "weight": 2
+  },
+  {
+   "id": "ntp.tencent",
+   "suffix": "ntp.tencent.com",
+   "brand": "",
+   "os": "",
+   "kind": "heartbeat",
+   "weight": 2
+  },
+  {
+   "id": "ntp.cloudflare",
+   "suffix": "time.cloudflare.com",
+   "brand": "",
+   "os": "",
+   "kind": "heartbeat",
+   "weight": 2
+  },
+  {
+   "id": "ntp.nist",
+   "suffix": "time.nist.gov",
+   "brand": "",
+   "os": "",
+   "kind": "heartbeat",
+   "weight": 2
+  },
+  {
+   "id": "apple.cna2",
+   "suffix": "www.appleiphonecell.com",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "apple.cna3",
+   "suffix": "www.airport.us",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "apple.cna4",
+   "suffix": "www.thinkdifferent.us",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "apple.cna5",
+   "suffix": "www.itools.info",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "apple.cna6",
+   "suffix": "www.ibook.info",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "vivo.wifi",
+   "suffix": "wifi.vivo.com.cn",
+   "brand": "vivo",
+   "os": "OriginOS",
+   "type": "手机",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "oppo.conn",
+   "suffix": "conn1.oppomobile.com",
+   "brand": "OPPO系",
+   "os": "ColorOS",
+   "type": "手机",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "oppo.conn2",
+   "suffix": "conn2.oppomobile.com",
+   "brand": "OPPO系",
+   "os": "ColorOS",
+   "type": "手机",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "lin.debcheck",
+   "suffix": "network-test.debian.org",
+   "brand": "",
+   "os": "Debian",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ubu.ntp",
+   "suffix": "ntp.ubuntu.com",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ubu.snap",
+   "suffix": "api.snapcraft.io",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ubu.snapcraft",
+   "suffix": "snapcraft.io",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "ubu.motd",
+   "suffix": "motd.ubuntu.com",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "ubu.changelogs",
+   "suffix": "changelogs.ubuntu.com",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "ubu.archive",
+   "suffix": "archive.ubuntu.com",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "service",
+   "weight": 9
+  },
+  {
+   "id": "ubu.security",
+   "suffix": "security.ubuntu.com",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "service",
+   "weight": 9
+  },
+  {
+   "id": "ubu.ports",
+   "suffix": "ports.ubuntu.com",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "service",
+   "weight": 9
+  },
+  {
+   "id": "ubu.esm",
+   "suffix": "esm.ubuntu.com",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "service",
+   "weight": 9
+  },
+  {
+   "id": "ubu.canonical",
+   "suffix": "canonical.com",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "ubu.cn",
+   "suffix": "cn.archive.ubuntu.com",
+   "brand": "",
+   "os": "Ubuntu",
+   "kind": "service",
+   "weight": 9
+  },
+  {
+   "id": "lin.debarchive",
+   "suffix": "deb.debian.org",
+   "brand": "",
+   "os": "Debian",
+   "kind": "service",
+   "weight": 9
+  },
+  {
+   "id": "lin.alpine",
+   "suffix": "alpinelinux.org",
+   "brand": "",
+   "os": "Alpine",
+   "kind": "service",
+   "weight": 9
+  },
+  {
+   "id": "lin.pve",
+   "suffix": "proxmox.com",
+   "brand": "Proxmox",
+   "os": "",
+   "type": "服务器",
+   "kind": "service",
+   "weight": 9
+  },
+  {
+   "id": "nas.synology",
+   "suffix": "synology.com",
+   "brand": "群晖",
+   "os": "DSM",
+   "type": "NAS",
+   "kind": "service",
+   "weight": 9
+  },
+  {
+   "id": "nas.syncheck",
+   "suffix": "checkip.synology.com",
+   "brand": "群晖",
+   "os": "DSM",
+   "type": "NAS",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "nas.qnap",
+   "suffix": "qnap.com",
+   "brand": "威联通",
+   "os": "QTS",
+   "type": "NAS",
+   "kind": "service",
+   "weight": 9
+  },
+  {
+   "id": "mi.miwifi.api",
+   "suffix": "api.miwifi.com",
+   "brand": "小米",
+   "os": "",
+   "type": "路由器",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "beh.wpad",
+   "prefix": "wpad.",
+   "brand": "",
+   "os": "Windows",
+   "kind": "heartbeat",
+   "weight": 7
+  },
+  {
+   "id": "beh.dnssd",
+   "contains": "_dns-sd._udp",
+   "brand": "Apple",
+   "os": "",
+   "kind": "heartbeat",
+   "weight": 6
+  },
+  {
+   "id": "beh.apt.srv",
+   "prefix": "_http._tcp.",
+   "qtype": "SRV",
+   "os": "Debian 系",
+   "kind": "heartbeat",
+   "weight": 6
+  },
+  {
+   "id": "beh.apt.srvs",
+   "prefix": "_https._tcp.",
+   "qtype": "SRV",
+   "os": "Debian 系",
+   "kind": "heartbeat",
+   "weight": 6
+  },
+  {
+   "id": "pve.enterprise",
+   "suffix": "enterprise.proxmox.com",
+   "brand": "",
+   "os": "Proxmox VE",
+   "type": "服务器",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "pve.download",
+   "suffix": "download.proxmox.com",
+   "brand": "",
+   "os": "Proxmox VE",
+   "type": "服务器",
+   "kind": "service",
+   "weight": 9
+  },
+  {
+   "id": "pve.com",
+   "suffix": "proxmox.com",
+   "brand": "",
+   "os": "Proxmox VE",
+   "type": "服务器",
+   "kind": "service",
+   "weight": 6
+  },
+  {
+   "id": "hw.supl",
+   "suffix": "supl.platform.dbankcloud.cn",
+   "brand": "华为",
+   "os": "HarmonyOS/EMUI",
+   "type": "手机",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "hw.celia",
+   "contains": "celiakeyboard",
+   "brand": "华为",
+   "os": "HarmonyOS/EMUI",
+   "type": "手机",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "hw.hivoice",
+   "contains": "hivoice",
+   "brand": "华为",
+   "os": "HarmonyOS/EMUI",
+   "type": "手机",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "hw.geo",
+   "suffix": "geo-drcn.platform.dbankcloud.cn",
+   "brand": "华为",
+   "os": "HarmonyOS/EMUI",
+   "type": "手机",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "hw.emui",
+   "suffix": "emui.dbankcloud.cn",
+   "brand": "华为",
+   "os": "HarmonyOS/EMUI",
+   "type": "手机",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "hw.whsmart",
+   "suffix": "whsmarthome.hwcloudtest.cn",
+   "brand": "华为",
+   "os": "",
+   "type": "路由器",
+   "kind": "heartbeat",
+   "weight": 8
+  },
+  {
+   "id": "hw.dbankcn",
+   "suffix": "dbankcloud.cn",
+   "brand": "华为",
+   "os": "HarmonyOS/EMUI",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "hw.dbankcdncn",
+   "suffix": "dbankcdn.cn",
+   "brand": "华为",
+   "os": "HarmonyOS/EMUI",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "hw.myhuawei",
+   "suffix": "myhuaweicloud.com",
+   "brand": "华为",
+   "os": "",
+   "kind": "service",
+   "weight": 5
+  },
+  {
+   "id": "oray.client",
+   "suffix": "client.oray.com",
+   "brand": "向日葵",
+   "os": "",
+   "kind": "heartbeat",
+   "weight": 9
+  },
+  {
+   "id": "oray.sunlogin",
+   "suffix": "sunlogin.oray.com",
+   "brand": "向日葵",
+   "os": "",
+   "kind": "service",
+   "weight": 7
+  },
+  {
+   "id": "oray.com",
+   "suffix": "oray.com",
+   "brand": "向日葵",
+   "os": "",
+   "kind": "service",
+   "weight": 6
+  },
+  {
+   "id": "oray.net",
+   "suffix": "oray.net",
+   "brand": "向日葵",
+   "os": "",
+   "kind": "service",
+   "weight": 6
+  },
+  {
+   "id": "oray.img",
+   "suffix": "orayimg.com",
+   "brand": "向日葵",
+   "os": "",
+   "kind": "service",
+   "weight": 5
+  },
+  {
+   "id": "midea.iot",
+   "suffix": "iot1.midea.com.cn",
+   "brand": "美的",
+   "os": "",
+   "type": "智能家电",
+   "kind": "heartbeat",
+   "weight": 10
+  },
+  {
+   "id": "midea.cn",
+   "suffix": "midea.com.cn",
+   "brand": "美的",
+   "os": "",
+   "type": "智能家电",
+   "kind": "service",
+   "weight": 8
+  },
+  {
+   "id": "midea.com",
+   "suffix": "midea.com",
+   "brand": "美的",
+   "os": "",
+   "kind": "service",
+   "weight": 6
+  },
+  {
+   "id": "midea.smart",
+   "suffix": "smartmidea.net",
+   "brand": "美的",
+   "os": "",
+   "type": "智能家电",
+   "kind": "service",
+   "weight": 8
+  }
+ ],
+ "hostname": [
+  {
+   "id": "hn.iphone",
+   "mode": "contains",
+   "value": "iphone",
+   "brand": "Apple",
+   "os": "iOS",
+   "type": "手机",
+   "weight": 6
+  },
+  {
+   "id": "hn.ipad",
+   "mode": "contains",
+   "value": "ipad",
+   "brand": "Apple",
+   "os": "iPadOS",
+   "type": "平板",
+   "weight": 6
+  },
+  {
+   "id": "hn.macbook",
+   "mode": "contains",
+   "value": "macbook",
+   "brand": "Apple",
+   "os": "macOS",
+   "type": "笔记本",
+   "weight": 6
+  },
+  {
+   "id": "hn.imac",
+   "mode": "contains",
+   "value": "imac",
+   "brand": "Apple",
+   "os": "macOS",
+   "type": "台式机",
+   "weight": 6
+  },
+  {
+   "id": "hn.macmini",
+   "mode": "contains",
+   "value": "mac-mini",
+   "brand": "Apple",
+   "os": "macOS",
+   "type": "台式机",
+   "weight": 6
+  },
+  {
+   "id": "hn.applewat",
+   "mode": "contains",
+   "value": "apple-watch",
+   "brand": "Apple",
+   "os": "watchOS",
+   "type": "手表",
+   "weight": 6
+  },
+  {
+   "id": "hn.appletv",
+   "mode": "contains",
+   "value": "apple-tv",
+   "brand": "Apple",
+   "os": "tvOS",
+   "type": "电视/盒子",
+   "weight": 6
+  },
+  {
+   "id": "hn.desktop",
+   "mode": "prefix",
+   "value": "desktop-",
+   "brand": "",
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 5
+  },
+  {
+   "id": "hn.laptop",
+   "mode": "prefix",
+   "value": "laptop-",
+   "brand": "",
+   "os": "Windows",
+   "type": "笔记本",
+   "weight": 4
+  },
+  {
+   "id": "hn.surface",
+   "mode": "contains",
+   "value": "surface",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "type": "笔记本",
+   "weight": 5
+  },
+  {
+   "id": "hn.android",
+   "mode": "prefix",
+   "value": "android-",
+   "brand": "",
+   "os": "Android",
+   "type": "手机",
+   "weight": 4
+  },
+  {
+   "id": "hn.redmi",
+   "mode": "contains",
+   "value": "redmi",
+   "brand": "小米",
+   "os": "MIUI/澎湃",
+   "type": "手机",
+   "weight": 6
+  },
+  {
+   "id": "hn.xiaomi",
+   "mode": "contains",
+   "value": "xiaomi",
+   "brand": "小米",
+   "os": "",
+   "type": "",
+   "weight": 6
+  },
+  {
+   "id": "hn.poco",
+   "mode": "contains",
+   "value": "poco",
+   "brand": "小米",
+   "os": "MIUI",
+   "type": "手机",
+   "weight": 5
+  },
+  {
+   "id": "hn.huawei",
+   "mode": "contains",
+   "value": "huawei",
+   "brand": "华为",
+   "os": "",
+   "type": "",
+   "weight": 6
+  },
+  {
+   "id": "hn.honor",
+   "mode": "contains",
+   "value": "honor",
+   "brand": "荣耀",
+   "os": "MagicOS",
+   "type": "",
+   "weight": 5
+  },
+  {
+   "id": "hn.oppo",
+   "mode": "contains",
+   "value": "oppo",
+   "brand": "OPPO",
+   "os": "ColorOS",
+   "type": "手机",
+   "weight": 6
+  },
+  {
+   "id": "hn.oneplus",
+   "mode": "contains",
+   "value": "oneplus",
+   "brand": "一加",
+   "os": "ColorOS",
+   "type": "手机",
+   "weight": 6
+  },
+  {
+   "id": "hn.realme",
+   "mode": "contains",
+   "value": "realme",
+   "brand": "realme",
+   "os": "realme UI",
+   "type": "手机",
+   "weight": 6
+  },
+  {
+   "id": "hn.vivo",
+   "mode": "contains",
+   "value": "vivo",
+   "brand": "vivo",
+   "os": "OriginOS",
+   "type": "手机",
+   "weight": 6
+  },
+  {
+   "id": "hn.iqoo",
+   "mode": "contains",
+   "value": "iqoo",
+   "brand": "vivo",
+   "os": "OriginOS",
+   "type": "手机",
+   "weight": 6
+  },
+  {
+   "id": "hn.samsung",
+   "mode": "contains",
+   "value": "samsung",
+   "brand": "三星",
+   "os": "One UI",
+   "type": "",
+   "weight": 6
+  },
+  {
+   "id": "hn.galaxy",
+   "mode": "contains",
+   "value": "galaxy",
+   "brand": "三星",
+   "os": "One UI",
+   "type": "手机",
+   "weight": 5
+  },
+  {
+   "id": "hn.meizu",
+   "mode": "contains",
+   "value": "meizu",
+   "brand": "魅族",
+   "os": "Flyme",
+   "type": "手机",
+   "weight": 6
+  },
+  {
+   "id": "hn.rpi",
+   "mode": "contains",
+   "value": "raspberrypi",
+   "brand": "Raspberry Pi",
+   "os": "Linux",
+   "type": "单板机",
+   "weight": 6
+  },
+  {
+   "id": "hn.openwrt",
+   "mode": "contains",
+   "value": "openwrt",
+   "brand": "",
+   "os": "OpenWrt",
+   "type": "路由器",
+   "weight": 6
+  },
+  {
+   "id": "hn.ubuntu",
+   "mode": "contains",
+   "value": "ubuntu",
+   "brand": "",
+   "os": "Ubuntu",
+   "type": "电脑",
+   "weight": 4
+  },
+  {
+   "id": "hn.esp",
+   "mode": "prefix",
+   "value": "esp-",
+   "brand": "Espressif",
+   "os": "",
+   "type": "IoT 模块",
+   "weight": 6
+  },
+  {
+   "id": "hn.esp32",
+   "mode": "contains",
+   "value": "esp32",
+   "brand": "Espressif",
+   "os": "",
+   "type": "IoT 模块",
+   "weight": 6
+  },
+  {
+   "id": "hn.esp8266",
+   "mode": "contains",
+   "value": "esp8266",
+   "brand": "Espressif",
+   "os": "",
+   "type": "IoT 模块",
+   "weight": 6
+  },
+  {
+   "id": "hn.tasmota",
+   "mode": "contains",
+   "value": "tasmota",
+   "brand": "Tasmota",
+   "os": "",
+   "type": "IoT 模块",
+   "weight": 6
+  },
+  {
+   "id": "hn.chromecas",
+   "mode": "contains",
+   "value": "chromecast",
+   "brand": "Google",
+   "os": "",
+   "type": "电视/盒子",
+   "weight": 6
+  },
+  {
+   "id": "hn.xbox",
+   "mode": "contains",
+   "value": "xbox",
+   "brand": "Xbox",
+   "os": "",
+   "type": "游戏机",
+   "weight": 6
+  },
+  {
+   "id": "hn.ps5",
+   "mode": "contains",
+   "value": "playstation",
+   "brand": "PlayStation",
+   "os": "",
+   "type": "游戏机",
+   "weight": 6
+  },
+  {
+   "id": "hn.switch",
+   "mode": "contains",
+   "value": "nintendo",
+   "brand": "Nintendo",
+   "os": "",
+   "type": "游戏机",
+   "weight": 6
+  },
+  {
+   "id": "hn.steamdeck",
+   "mode": "contains",
+   "value": "steamdeck",
+   "brand": "Valve",
+   "os": "Linux",
+   "type": "游戏机",
+   "weight": 6
+  },
+  {
+   "id": "hn.kindle",
+   "mode": "contains",
+   "value": "kindle",
+   "brand": "Amazon",
+   "os": "",
+   "type": "阅读器",
+   "weight": 6
+  },
+  {
+   "id": "hn.echo",
+   "mode": "contains",
+   "value": "amazon-echo",
+   "brand": "Amazon",
+   "os": "",
+   "type": "智能音箱",
+   "weight": 6
+  },
+  {
+   "id": "hn.sonos",
+   "mode": "contains",
+   "value": "sonos",
+   "brand": "Sonos",
+   "os": "",
+   "type": "智能音箱",
+   "weight": 6
+  },
+  {
+   "id": "hn.epson",
+   "mode": "contains",
+   "value": "epson",
+   "brand": "Epson",
+   "os": "",
+   "type": "打印机",
+   "weight": 6
+  },
+  {
+   "id": "hn.canon",
+   "mode": "contains",
+   "value": "canon",
+   "brand": "Canon",
+   "os": "",
+   "type": "打印机",
+   "weight": 5
+  },
+  {
+   "id": "hn.brother",
+   "mode": "contains",
+   "value": "brother",
+   "brand": "Brother",
+   "os": "",
+   "type": "打印机",
+   "weight": 5
+  },
+  {
+   "id": "hn.hpprint",
+   "mode": "contains",
+   "value": "hp-print",
+   "brand": "HP",
+   "os": "",
+   "type": "打印机",
+   "weight": 6
+  },
+  {
+   "id": "hn.synology",
+   "mode": "contains",
+   "value": "synology",
+   "brand": "群晖",
+   "os": "DSM",
+   "type": "NAS",
+   "weight": 6
+  },
+  {
+   "id": "hn.qnap",
+   "mode": "contains",
+   "value": "qnap",
+   "brand": "威联通",
+   "os": "QTS",
+   "type": "NAS",
+   "weight": 6
+  },
+  {
+   "id": "hn.tplink",
+   "mode": "contains",
+   "value": "tp-link",
+   "brand": "TP-LINK",
+   "os": "",
+   "type": "网络设备",
+   "weight": 5
+  },
+  {
+   "id": "hn.amazfit",
+   "mode": "contains",
+   "value": "amazfit",
+   "brand": "华米",
+   "os": "",
+   "type": "手表",
+   "weight": 6
+  },
+  {
+   "id": "hn.tesla",
+   "mode": "contains",
+   "value": "tesla",
+   "brand": "Tesla",
+   "os": "",
+   "type": "车机",
+   "weight": 5
+  },
+  {
+   "id": "hn.macbare",
+   "mode": "exact",
+   "value": "mac",
+   "brand": "Apple",
+   "os": "macOS",
+   "type": "电脑",
+   "weight": 5
+  },
+  {
+   "id": "hn.macstudio",
+   "mode": "contains",
+   "value": "mac-studio",
+   "brand": "Apple",
+   "os": "macOS",
+   "type": "台式机",
+   "weight": 6
+  },
+  {
+   "id": "hn.macpro",
+   "mode": "contains",
+   "value": "mac-pro",
+   "brand": "Apple",
+   "os": "macOS",
+   "type": "台式机",
+   "weight": 6
+  },
+  {
+   "id": "hn.airpods",
+   "mode": "contains",
+   "value": "airpods",
+   "brand": "Apple",
+   "os": "",
+   "type": "耳机",
+   "weight": 6
+  },
+  {
+   "id": "hn.homepod",
+   "mode": "contains",
+   "value": "homepod",
+   "brand": "Apple",
+   "os": "",
+   "type": "智能音箱",
+   "weight": 6
+  },
+  {
+   "id": "hn.redminote",
+   "mode": "contains",
+   "value": "redmi-note",
+   "brand": "小米",
+   "os": "MIUI/澎湃",
+   "type": "手机",
+   "weight": 6
+  },
+  {
+   "id": "hn.win11",
+   "mode": "prefix",
+   "value": "win-",
+   "brand": "",
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 3
+  },
+  {
+   "id": "hn.localhost",
+   "mode": "exact",
+   "value": "localhost",
+   "brand": "",
+   "os": "",
+   "type": "",
+   "weight": 0
+  },
+  {
+   "id": "hn.debian",
+   "mode": "contains",
+   "value": "debian",
+   "brand": "",
+   "os": "Debian",
+   "type": "电脑",
+   "weight": 4
+  },
+  {
+   "id": "hn.pve",
+   "mode": "contains",
+   "value": "pve",
+   "brand": "Proxmox",
+   "os": "",
+   "type": "服务器",
+   "weight": 3
+  },
+  {
+   "id": "hn.alpine",
+   "mode": "contains",
+   "value": "alpine",
+   "brand": "",
+   "os": "Alpine",
+   "type": "",
+   "weight": 4
+  },
+  {
+   "id": "tp.ipc",
+   "mode": "prefix",
+   "value": "tl-ipc",
+   "brand": "TP-LINK",
+   "os": "",
+   "type": "摄像头",
+   "weight": 6
+  },
+  {
+   "id": "hn.pikvm",
+   "mode": "contains",
+   "value": "pikvm",
+   "brand": "PiKVM",
+   "os": "Arch Linux ARM",
+   "type": "单板机",
+   "weight": 6
+  }
+ ],
+ "mdns_service": [
+  {
+   "id": "sv.airplay",
+   "mode": "contains",
+   "value": "_airplay._tcp",
+   "brand": "Apple",
+   "os": "iOS/tvOS/macOS",
+   "weight": 9
+  },
+  {
+   "id": "sv.companion",
+   "mode": "contains",
+   "value": "_companion-link._tcp",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "weight": 9
+  },
+  {
+   "id": "sv.rdlink",
+   "mode": "contains",
+   "value": "_rdlink._tcp",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "weight": 9
+  },
+  {
+   "id": "sv.sleepprox",
+   "mode": "contains",
+   "value": "_sleep-proxy._udp",
+   "brand": "Apple",
+   "os": "",
+   "weight": 8
+  },
+  {
+   "id": "sv.touchable",
+   "mode": "contains",
+   "value": "_touch-able._tcp",
+   "brand": "Apple",
+   "os": "tvOS",
+   "type": "电视/盒子",
+   "weight": 9
+  },
+  {
+   "id": "sv.raop",
+   "mode": "contains",
+   "value": "_raop._tcp",
+   "brand": "",
+   "os": "",
+   "type": "智能音箱",
+   "weight": 5
+  },
+  {
+   "id": "sv.hap",
+   "mode": "contains",
+   "value": "_hap._tcp",
+   "brand": "",
+   "os": "HomeKit",
+   "type": "智能家居",
+   "weight": 8
+  },
+  {
+   "id": "sv.cast",
+   "mode": "contains",
+   "value": "_googlecast._tcp",
+   "brand": "Google",
+   "os": "",
+   "type": "电视/盒子",
+   "weight": 9
+  },
+  {
+   "id": "sv.atvremote",
+   "mode": "contains",
+   "value": "_androidtvremote2._tcp",
+   "brand": "",
+   "os": "Android TV",
+   "type": "电视/盒子",
+   "weight": 9
+  },
+  {
+   "id": "sv.dosvc",
+   "mode": "contains",
+   "value": "_dosvc._tcp",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 9
+  },
+  {
+   "id": "sv.workstn",
+   "mode": "contains",
+   "value": "_workstation._tcp",
+   "brand": "",
+   "os": "Linux",
+   "type": "电脑",
+   "weight": 7
+  },
+  {
+   "id": "sv.miio",
+   "mode": "contains",
+   "value": "_miio._udp",
+   "brand": "小米",
+   "os": "",
+   "type": "智能家居",
+   "weight": 9
+  },
+  {
+   "id": "sv.ipp",
+   "mode": "contains",
+   "value": "_ipp._tcp",
+   "brand": "",
+   "os": "",
+   "type": "打印机",
+   "weight": 8
+  },
+  {
+   "id": "sv.printer",
+   "mode": "contains",
+   "value": "_printer._tcp",
+   "brand": "",
+   "os": "",
+   "type": "打印机",
+   "weight": 8
+  },
+  {
+   "id": "sv.pdl",
+   "mode": "contains",
+   "value": "_pdl-datastream._tcp",
+   "brand": "",
+   "os": "",
+   "type": "打印机",
+   "weight": 8
+  },
+  {
+   "id": "sv.scanner",
+   "mode": "contains",
+   "value": "_scanner._tcp",
+   "brand": "",
+   "os": "",
+   "type": "打印机",
+   "weight": 7
+  },
+  {
+   "id": "sv.sonos",
+   "mode": "contains",
+   "value": "_sonos._tcp",
+   "brand": "Sonos",
+   "os": "",
+   "type": "智能音箱",
+   "weight": 9
+  },
+  {
+   "id": "sv.hue",
+   "mode": "contains",
+   "value": "_hue._tcp",
+   "brand": "Philips Hue",
+   "os": "",
+   "type": "智能灯",
+   "weight": 9
+  },
+  {
+   "id": "sv.amzn",
+   "mode": "contains",
+   "value": "_amzn-wplay._tcp",
+   "brand": "Amazon",
+   "os": "Fire OS",
+   "type": "电视/盒子",
+   "weight": 9
+  },
+  {
+   "id": "sv.nvstream",
+   "mode": "contains",
+   "value": "_nvstream._tcp",
+   "brand": "NVIDIA",
+   "os": "",
+   "type": "",
+   "weight": 8
+  },
+  {
+   "id": "sv.afp",
+   "mode": "contains",
+   "value": "_afpovertcp._tcp",
+   "brand": "",
+   "os": "",
+   "type": "NAS",
+   "weight": 5
+  },
+  {
+   "id": "sv.esphome",
+   "mode": "contains",
+   "value": "_esphomelib._tcp",
+   "brand": "ESPHome",
+   "os": "",
+   "type": "IoT 模块",
+   "weight": 9
+  },
+  {
+   "id": "svc.dawn",
+   "mode": "contains",
+   "value": "_dawn._tcp",
+   "brand": "",
+   "os": "OpenWrt",
+   "type": "路由器",
+   "weight": 9
+  },
+  {
+   "id": "svc.thread.meshcop",
+   "mode": "contains",
+   "value": "_meshcop._udp",
+   "brand": "",
+   "os": "",
+   "type": "智能家居",
+   "weight": 9
+  },
+  {
+   "id": "svc.thread.meshcope",
+   "mode": "contains",
+   "value": "_meshcop-e._tcp",
+   "brand": "",
+   "os": "",
+   "type": "智能家居",
+   "weight": 9
+  },
+  {
+   "id": "svc.thread.trel",
+   "mode": "contains",
+   "value": "_trel._udp",
+   "brand": "",
+   "os": "",
+   "type": "智能家居",
+   "weight": 8
+  },
+  {
+   "id": "svc.matter",
+   "mode": "contains",
+   "value": "_matter._tcp",
+   "brand": "",
+   "os": "",
+   "type": "智能家居",
+   "weight": 9
+  },
+  {
+   "id": "svc.matter.c",
+   "mode": "contains",
+   "value": "_matterc._udp",
+   "brand": "",
+   "os": "",
+   "type": "智能家居",
+   "weight": 9
+  },
+  {
+   "id": "svc.matter.d",
+   "mode": "contains",
+   "value": "_matterd._udp",
+   "brand": "",
+   "os": "",
+   "type": "智能家居",
+   "weight": 8
+  },
+  {
+   "id": "svc.coap",
+   "mode": "contains",
+   "value": "_coap._udp",
+   "brand": "",
+   "os": "",
+   "type": "智能家居",
+   "weight": 7
+  },
+  {
+   "id": "svc.mqtt",
+   "mode": "contains",
+   "value": "_mqtt._tcp",
+   "brand": "",
+   "os": "",
+   "type": "智能家居",
+   "weight": 7
+  }
+ ],
+ "mdns_model": [
+  {
+   "id": "md.iphone",
+   "mode": "prefix",
+   "value": "iphone",
+   "brand": "Apple",
+   "os": "iOS",
+   "type": "手机",
+   "weight": 10
+  },
+  {
+   "id": "md.ipad",
+   "mode": "prefix",
+   "value": "ipad",
+   "brand": "Apple",
+   "os": "iPadOS",
+   "type": "平板",
+   "weight": 10
+  },
+  {
+   "id": "md.watch",
+   "mode": "prefix",
+   "value": "watch",
+   "brand": "Apple",
+   "os": "watchOS",
+   "type": "手表",
+   "weight": 10
+  },
+  {
+   "id": "md.mbp",
+   "mode": "prefix",
+   "value": "macbookpro",
+   "brand": "Apple",
+   "os": "macOS",
+   "type": "笔记本",
+   "weight": 10
+  },
+  {
+   "id": "md.mba",
+   "mode": "prefix",
+   "value": "macbookair",
+   "brand": "Apple",
+   "os": "macOS",
+   "type": "笔记本",
+   "weight": 10
+  },
+  {
+   "id": "md.mb",
+   "mode": "prefix",
+   "value": "mac",
+   "brand": "Apple",
+   "os": "macOS",
+   "type": "电脑",
+   "weight": 9
+  },
+  {
+   "id": "md.imac",
+   "mode": "prefix",
+   "value": "imac",
+   "brand": "Apple",
+   "os": "macOS",
+   "type": "台式机",
+   "weight": 10
+  },
+  {
+   "id": "md.atv",
+   "mode": "prefix",
+   "value": "appletv",
+   "brand": "Apple",
+   "os": "tvOS",
+   "type": "电视/盒子",
+   "weight": 10
+  },
+  {
+   "id": "md.homepod",
+   "mode": "prefix",
+   "value": "audioaccessory",
+   "brand": "Apple",
+   "os": "",
+   "type": "智能音箱",
+   "weight": 10
+  },
+  {
+   "id": "md.vision",
+   "mode": "prefix",
+   "value": "realitydevice",
+   "brand": "Apple",
+   "os": "visionOS",
+   "type": "头显",
+   "weight": 10
+  },
+  {
+   "id": "md.chromecast",
+   "mode": "contains",
+   "value": "chromecast",
+   "brand": "Google",
+   "os": "",
+   "type": "电视/盒子",
+   "weight": 10
+  },
+  {
+   "id": "md.googlehome",
+   "mode": "contains",
+   "value": "google home",
+   "brand": "Google",
+   "os": "",
+   "type": "智能音箱",
+   "weight": 10
+  },
+  {
+   "id": "md.nest",
+   "mode": "contains",
+   "value": "nest",
+   "brand": "Google Nest",
+   "os": "",
+   "type": "智能家居",
+   "weight": 9
+  },
+  {
+   "id": "md.shield",
+   "mode": "contains",
+   "value": "shield",
+   "brand": "NVIDIA",
+   "os": "Android TV",
+   "type": "电视/盒子",
+   "weight": 9
+  }
+ ],
+ "upnp": [
+  {
+   "id": "up.win",
+   "mode": "contains",
+   "value": "microsoft-windows",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 9
+  },
+  {
+   "id": "up.xbox",
+   "mode": "contains",
+   "value": "xbox",
+   "brand": "Xbox",
+   "os": "",
+   "type": "游戏机",
+   "weight": 9
+  },
+  {
+   "id": "up.ps",
+   "mode": "contains",
+   "value": "playstation",
+   "brand": "PlayStation",
+   "os": "",
+   "type": "游戏机",
+   "weight": 9
+  },
+  {
+   "id": "up.sonos",
+   "mode": "contains",
+   "value": "sonos",
+   "brand": "Sonos",
+   "os": "",
+   "type": "智能音箱",
+   "weight": 9
+  },
+  {
+   "id": "up.roku",
+   "mode": "contains",
+   "value": "roku",
+   "brand": "Roku",
+   "os": "",
+   "type": "电视/盒子",
+   "weight": 9
+  },
+  {
+   "id": "up.samsung",
+   "mode": "contains",
+   "value": "samsung",
+   "brand": "三星",
+   "os": "",
+   "type": "电视/盒子",
+   "weight": 8
+  },
+  {
+   "id": "up.lge",
+   "mode": "contains",
+   "value": "webos",
+   "brand": "LG",
+   "os": "webOS",
+   "type": "电视/盒子",
+   "weight": 9
+  },
+  {
+   "id": "up.hisense",
+   "mode": "contains",
+   "value": "hisense",
+   "brand": "海信",
+   "os": "",
+   "type": "电视/盒子",
+   "weight": 9
+  },
+  {
+   "id": "up.tcl",
+   "mode": "contains",
+   "value": "tcl",
+   "brand": "TCL",
+   "os": "",
+   "type": "电视/盒子",
+   "weight": 8
+  },
+  {
+   "id": "up.skyworth",
+   "mode": "contains",
+   "value": "skyworth",
+   "brand": "创维",
+   "os": "",
+   "type": "电视/盒子",
+   "weight": 9
+  },
+  {
+   "id": "up.synology",
+   "mode": "contains",
+   "value": "synology",
+   "brand": "群晖",
+   "os": "DSM",
+   "type": "NAS",
+   "weight": 9
+  },
+  {
+   "id": "up.qnap",
+   "mode": "contains",
+   "value": "qnap",
+   "brand": "威联通",
+   "os": "QTS",
+   "type": "NAS",
+   "weight": 9
+  },
+  {
+   "id": "up.openwrt",
+   "mode": "contains",
+   "value": "openwrt",
+   "brand": "",
+   "os": "OpenWrt",
+   "type": "路由器",
+   "weight": 8
+  },
+  {
+   "id": "up.esp",
+   "mode": "contains",
+   "value": "espressif",
+   "brand": "Espressif",
+   "os": "",
+   "type": "IoT 模块",
+   "weight": 9
+  }
+ ],
+ "dhcp_vendor": [
+  {
+   "id": "vc.android",
+   "mode": "prefix",
+   "value": "android-dhcp",
+   "brand": "",
+   "os": "Android",
+   "type": "手机",
+   "weight": 10,
+   "_note": "android-dhcp-14 里的数字就是 Android 大版本号, 代码里会单独抽出来"
+  },
+  {
+   "id": "vc.msft",
+   "mode": "prefix",
+   "value": "msft 5.0",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 6,
+   "kind": "weak"
+  },
+  {
+   "id": "vc.msft2",
+   "mode": "prefix",
+   "value": "msft",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 3,
+   "kind": "weak"
+  },
+  {
+   "id": "vc.udhcp",
+   "mode": "contains",
+   "value": "udhcp",
+   "brand": "",
+   "os": "嵌入式 Linux",
+   "type": "嵌入式设备",
+   "weight": 6
+  },
+  {
+   "id": "vc.dhcpcd",
+   "mode": "contains",
+   "value": "dhcpcd",
+   "brand": "",
+   "os": "Linux",
+   "type": "",
+   "weight": 5
+  },
+  {
+   "id": "vc.huawei",
+   "mode": "contains",
+   "value": "huawei",
+   "brand": "华为",
+   "os": "",
+   "type": "",
+   "weight": 9
+  },
+  {
+   "id": "vc.honor",
+   "mode": "contains",
+   "value": "honor",
+   "brand": "荣耀",
+   "os": "MagicOS",
+   "type": "",
+   "weight": 9
+  },
+  {
+   "id": "vc.xiaomi",
+   "mode": "contains",
+   "value": "xiaomi",
+   "brand": "小米",
+   "os": "",
+   "type": "",
+   "weight": 9
+  },
+  {
+   "id": "vc.oppo",
+   "mode": "contains",
+   "value": "oppo",
+   "brand": "OPPO",
+   "os": "ColorOS",
+   "type": "手机",
+   "weight": 9
+  },
+  {
+   "id": "vc.vivo",
+   "mode": "contains",
+   "value": "vivo",
+   "brand": "vivo",
+   "os": "OriginOS",
+   "type": "手机",
+   "weight": 9
+  },
+  {
+   "id": "vc.samsung",
+   "mode": "contains",
+   "value": "samsung",
+   "brand": "三星",
+   "os": "One UI",
+   "type": "",
+   "weight": 9
+  },
+  {
+   "id": "vc.hisense",
+   "mode": "contains",
+   "value": "hisense",
+   "brand": "海信",
+   "os": "",
+   "type": "电视/盒子",
+   "weight": 9
+  },
+  {
+   "id": "vc.skyworth",
+   "mode": "contains",
+   "value": "skyworth",
+   "brand": "创维",
+   "os": "",
+   "type": "电视/盒子",
+   "weight": 9
+  },
+  {
+   "id": "vc.tcl",
+   "mode": "contains",
+   "value": "tcl",
+   "brand": "TCL",
+   "os": "",
+   "type": "电视/盒子",
+   "weight": 8
+  },
+  {
+   "id": "vc.espressif",
+   "mode": "contains",
+   "value": "espressif",
+   "brand": "Espressif",
+   "os": "",
+   "type": "IoT 模块",
+   "weight": 9
+  },
+  {
+   "id": "vc.esp",
+   "mode": "prefix",
+   "value": "esp",
+   "brand": "Espressif",
+   "os": "",
+   "type": "IoT 模块",
+   "weight": 7
+  },
+  {
+   "id": "vc.hp",
+   "mode": "contains",
+   "value": "hewlett",
+   "brand": "HP",
+   "os": "",
+   "type": "打印机",
+   "weight": 9
+  },
+  {
+   "id": "vc.epson",
+   "mode": "contains",
+   "value": "epson",
+   "brand": "Epson",
+   "os": "",
+   "type": "打印机",
+   "weight": 9
+  },
+  {
+   "id": "vc.canon",
+   "mode": "contains",
+   "value": "canon",
+   "brand": "Canon",
+   "os": "",
+   "type": "打印机",
+   "weight": 9
+  },
+  {
+   "id": "vc.brother",
+   "mode": "contains",
+   "value": "brother",
+   "brand": "Brother",
+   "os": "",
+   "type": "打印机",
+   "weight": 9
+  },
+  {
+   "id": "vc.ubnt",
+   "mode": "contains",
+   "value": "ubnt",
+   "brand": "Ubiquiti",
+   "os": "",
+   "type": "网络设备",
+   "weight": 9
+  },
+  {
+   "id": "vc.tplink",
+   "mode": "contains",
+   "value": "tp-link",
+   "brand": "TP-LINK",
+   "os": "",
+   "type": "网络设备",
+   "weight": 9
+  },
+  {
+   "id": "vc.dahua",
+   "mode": "contains",
+   "value": "dahua",
+   "brand": "大华",
+   "os": "",
+   "type": "摄像头",
+   "weight": 9
+  },
+  {
+   "id": "vc.hikvision",
+   "mode": "contains",
+   "value": "hikvision",
+   "brand": "海康/萤石",
+   "os": "",
+   "type": "摄像头",
+   "weight": 9
+  },
+  {
+   "id": "vc.sonos",
+   "mode": "contains",
+   "value": "sonos",
+   "brand": "Sonos",
+   "os": "",
+   "type": "智能音箱",
+   "weight": 9
+  },
+  {
+   "id": "vc.roku",
+   "mode": "contains",
+   "value": "roku",
+   "brand": "Roku",
+   "os": "",
+   "type": "电视/盒子",
+   "weight": 9
+  },
+  {
+   "id": "vc.nintendo",
+   "mode": "contains",
+   "value": "nintendo",
+   "brand": "Nintendo",
+   "os": "",
+   "type": "游戏机",
+   "weight": 9
+  },
+  {
+   "id": "vc.aruba",
+   "mode": "contains",
+   "value": "aruba",
+   "brand": "Aruba",
+   "os": "",
+   "type": "网络设备",
+   "weight": 8
+  }
+ ],
+ "dhcp_fp": [
+  {
+   "id": "fp.apple.a",
+   "mode": "exact",
+   "value": "1,121,3,6,15,119,252",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "weight": 9
+  },
+  {
+   "id": "fp.apple.b",
+   "mode": "exact",
+   "value": "1,3,6,15,119,252",
+   "brand": "Apple",
+   "os": "iOS/macOS",
+   "weight": 8
+  },
+  {
+   "id": "fp.apple.c",
+   "mode": "exact",
+   "value": "1,121,3,6,15,119,252,95,44,46",
+   "brand": "Apple",
+   "os": "macOS",
+   "type": "电脑",
+   "weight": 9
+  },
+  {
+   "id": "fp.win.a",
+   "mode": "exact",
+   "value": "1,3,6,15,31,33,43,44,46,47,119,121,249,252",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 9
+  },
+  {
+   "id": "fp.win.b",
+   "mode": "exact",
+   "value": "1,15,3,6,44,46,47,31,33,121,249,43,252",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 9
+  },
+  {
+   "id": "fp.win.c",
+   "mode": "exact",
+   "value": "1,15,3,6,44,46,47,31,33,121,249,43",
+   "brand": "Microsoft",
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 8
+  },
+  {
+   "id": "fp.android.a",
+   "mode": "exact",
+   "value": "1,3,6,15,26,28,51,58,59,43",
+   "brand": "",
+   "os": "Android",
+   "type": "手机",
+   "weight": 8
+  },
+  {
+   "id": "fp.android.b",
+   "mode": "exact",
+   "value": "1,3,6,15,26,28,51,58,59,43,114",
+   "brand": "",
+   "os": "Android",
+   "type": "手机",
+   "weight": 9
+  },
+  {
+   "id": "fp.android.c",
+   "mode": "exact",
+   "value": "1,3,6,15,26,28,51,58,59",
+   "brand": "",
+   "os": "Android",
+   "type": "手机",
+   "weight": 7
+  },
+  {
+   "id": "fp.dhclient",
+   "mode": "exact",
+   "value": "1,28,2,3,15,6,119,12,44,47,26,121,42",
+   "brand": "",
+   "os": "Linux",
+   "type": "电脑",
+   "weight": 8
+  },
+  {
+   "id": "fp.udhcpc",
+   "mode": "exact",
+   "value": "1,3,6,12,15,17,28,42,51,54,58,59,66,67",
+   "brand": "",
+   "os": "嵌入式 Linux",
+   "type": "IoT/路由",
+   "weight": 7
+  },
+  {
+   "id": "fp.lwip",
+   "mode": "exact",
+   "value": "1,3,28,6",
+   "brand": "Espressif",
+   "os": "",
+   "type": "IoT 模块",
+   "weight": 7
+  }
+ ],
+ "oui_brand": [
+  {
+   "id": "ob.apple",
+   "mode": "contains",
+   "value": "apple",
+   "brand": "Apple",
+   "weight": 5
+  },
+  {
+   "id": "ob.xiaomi",
+   "mode": "contains",
+   "value": "xiaomi",
+   "brand": "小米",
+   "weight": 5
+  },
+  {
+   "id": "ob.huawei",
+   "mode": "contains",
+   "value": "huawei",
+   "brand": "华为",
+   "weight": 5
+  },
+  {
+   "id": "ob.honor",
+   "mode": "contains",
+   "value": "hihonor",
+   "brand": "荣耀",
+   "weight": 5
+  },
+  {
+   "id": "ob.oppo",
+   "mode": "contains",
+   "value": "oppo",
+   "brand": "OPPO",
+   "weight": 5
+  },
+  {
+   "id": "ob.vivo",
+   "mode": "contains",
+   "value": "vivo mobile",
+   "brand": "vivo",
+   "weight": 5
+  },
+  {
+   "id": "ob.samsung",
+   "mode": "contains",
+   "value": "samsung",
+   "brand": "三星",
+   "weight": 5
+  },
+  {
+   "id": "ob.oneplus",
+   "mode": "contains",
+   "value": "oneplus",
+   "brand": "一加",
+   "weight": 5
+  },
+  {
+   "id": "ob.meizu",
+   "mode": "contains",
+   "value": "meizu",
+   "brand": "魅族",
+   "weight": 5
+  },
+  {
+   "id": "ob.google",
+   "mode": "contains",
+   "value": "google",
+   "brand": "Google",
+   "weight": 5
+  },
+  {
+   "id": "ob.amazon",
+   "mode": "contains",
+   "value": "amazon technologies",
+   "brand": "Amazon",
+   "weight": 5
+  },
+  {
+   "id": "ob.microsoft",
+   "mode": "contains",
+   "value": "microsoft",
+   "brand": "Microsoft",
+   "weight": 5
+  },
+  {
+   "id": "ob.sonyint",
+   "mode": "contains",
+   "value": "sony interactive",
+   "brand": "PlayStation",
+   "type": "游戏机",
+   "weight": 6
+  },
+  {
+   "id": "ob.nintendo",
+   "mode": "contains",
+   "value": "nintendo",
+   "brand": "Nintendo",
+   "type": "游戏机",
+   "weight": 6
+  },
+  {
+   "id": "ob.sonos",
+   "mode": "contains",
+   "value": "sonos",
+   "brand": "Sonos",
+   "type": "智能音箱",
+   "weight": 6
+  },
+  {
+   "id": "ob.espressif",
+   "mode": "contains",
+   "value": "espressif",
+   "brand": "Espressif",
+   "type": "IoT 模块",
+   "weight": 6
+  },
+  {
+   "id": "ob.rpi",
+   "mode": "contains",
+   "value": "raspberry pi",
+   "brand": "Raspberry Pi",
+   "type": "单板机",
+   "weight": 6
+  },
+  {
+   "id": "ob.tplink",
+   "mode": "contains",
+   "value": "tp-link",
+   "brand": "TP-LINK",
+   "type": "网络设备",
+   "weight": 5
+  },
+  {
+   "id": "ob.hikvision",
+   "mode": "contains",
+   "value": "hikvision",
+   "brand": "海康/萤石",
+   "type": "摄像头",
+   "weight": 6
+  },
+  {
+   "id": "ob.dahua",
+   "mode": "contains",
+   "value": "dahua",
+   "brand": "大华",
+   "type": "摄像头",
+   "weight": 6
+  },
+  {
+   "id": "ob.ubnt",
+   "mode": "contains",
+   "value": "ubiquiti",
+   "brand": "Ubiquiti",
+   "type": "网络设备",
+   "weight": 5
+  },
+  {
+   "id": "ob.netgear",
+   "mode": "contains",
+   "value": "netgear",
+   "brand": "NETGEAR",
+   "type": "网络设备",
+   "weight": 5
+  },
+  {
+   "id": "ob.dlink",
+   "mode": "contains",
+   "value": "d-link",
+   "brand": "D-Link",
+   "type": "网络设备",
+   "weight": 5
+  },
+  {
+   "id": "ob.lg",
+   "mode": "contains",
+   "value": "lg electronics",
+   "brand": "LG",
+   "weight": 5
+  },
+  {
+   "id": "ob.hisense",
+   "mode": "contains",
+   "value": "hisense",
+   "brand": "海信",
+   "weight": 5
+  },
+  {
+   "id": "ob.skyworth",
+   "mode": "contains",
+   "value": "skyworth",
+   "brand": "创维",
+   "weight": 5
+  },
+  {
+   "id": "ob.msi",
+   "mode": "contains",
+   "value": "micro-star",
+   "brand": "微星",
+   "type": "电脑",
+   "weight": 4
+  },
+  {
+   "id": "ob.asus",
+   "mode": "contains",
+   "value": "asustek",
+   "brand": "华硕",
+   "type": "电脑",
+   "weight": 4
+  },
+  {
+   "id": "ob.giga",
+   "mode": "contains",
+   "value": "giga-byte",
+   "brand": "技嘉",
+   "type": "电脑",
+   "weight": 4
+  },
+  {
+   "id": "ob.dell",
+   "mode": "contains",
+   "value": "dell inc",
+   "brand": "Dell",
+   "type": "电脑",
+   "weight": 4
+  },
+  {
+   "id": "ob.lenovo",
+   "mode": "contains",
+   "value": "lenovo",
+   "brand": "联想",
+   "type": "电脑",
+   "weight": 4
+  },
+  {
+   "id": "ob.lcfc",
+   "mode": "contains",
+   "value": "lcfc",
+   "brand": "联想",
+   "type": "电脑",
+   "weight": 4
+  },
+  {
+   "id": "ob.hp",
+   "mode": "contains",
+   "value": "hewlett packard",
+   "brand": "HP",
+   "weight": 4
+  },
+  {
+   "id": "ob.proxmox",
+   "mode": "contains",
+   "value": "proxmox",
+   "brand": "",
+   "weight": 9,
+   "platform": "Proxmox 虚拟机"
+  },
+  {
+   "id": "ob.vmware",
+   "mode": "contains",
+   "value": "vmware",
+   "brand": "",
+   "weight": 9,
+   "platform": "VMware 虚拟机"
+  },
+  {
+   "id": "ob.qemu",
+   "mode": "contains",
+   "value": "qemu",
+   "brand": "",
+   "weight": 9,
+   "platform": "QEMU/KVM 虚拟机"
+  },
+  {
+   "id": "ob.xen",
+   "mode": "contains",
+   "value": "xensource",
+   "brand": "",
+   "weight": 9,
+   "platform": "Xen 虚拟机"
+  },
+  {
+   "id": "ob.parallels",
+   "mode": "contains",
+   "value": "parallels",
+   "brand": "",
+   "weight": 9,
+   "platform": "Parallels 虚拟机"
+  },
+  {
+   "id": "ob.vbox",
+   "mode": "contains",
+   "value": "virtualbox",
+   "brand": "",
+   "weight": 9,
+   "platform": "VirtualBox 虚拟机"
+  },
+  {
+   "id": "ob.midea",
+   "mode": "contains",
+   "value": "midea",
+   "brand": "美的",
+   "type": "智能家电",
+   "weight": 5
+  },
+  {
+   "id": "ob.asrock",
+   "mode": "contains",
+   "value": "asrock",
+   "brand": "华擎",
+   "type": "电脑",
+   "weight": 5
+  },
+  {
+   "id": "ob.nic.intel",
+   "mode": "contains",
+   "value": "intel corporate",
+   "brand": "",
+   "type": "电脑",
+   "weight": 3
+  },
+  {
+   "id": "ob.nic.cloudnet",
+   "mode": "contains",
+   "value": "cloud network technology",
+   "brand": "",
+   "type": "电脑",
+   "weight": 3
+  },
+  {
+   "id": "ob.nic.liteon",
+   "mode": "contains",
+   "value": "liteon technology",
+   "brand": "",
+   "type": "电脑",
+   "weight": 3
+  }
+ ],
+ "stack": [
+  {
+   "id": "stack.win.pair",
+   "desc": "A/AAAA 均衡成对且无 HTTPS (Windows DNS Client)",
+   "min_samples": 20,
+   "ratio": {
+    "A": [
+     0.35,
+     0.6
+    ],
+    "AAAA": [
+     0.35,
+     0.6
+    ],
+    "HTTPS": [
+     0.0,
+     0.01
+    ]
+   },
+   "os": "Windows",
+   "weight": 5,
+   "pair_a4": [
+    0.3,
+    1.0
+   ]
+  },
+  {
+   "id": "stack.apple.https",
+   "desc": "大量 HTTPS(RR 65) 且几乎不发 AAAA (Apple 系统栈)",
+   "min_samples": 25,
+   "ratio": {
+    "HTTPS": [
+     0.15,
+     1.0
+    ],
+    "AAAA": [
+     0.0,
+     0.15
+    ]
+   },
+   "brand": "Apple",
+   "weight": 4
+  },
+  {
+   "id": "stack.linux.aaaa",
+   "desc": "AAAA 远多于 A 且无 HTTPS (glibc getaddrinfo, 无浏览器)",
+   "min_samples": 30,
+   "ratio": {
+    "AAAA": [
+     0.6,
+     1.0
+    ],
+    "HTTPS": [
+     0.0,
+     0.01
+    ]
+   },
+   "os": "Linux",
+   "weight": 3
+  }
+ ],
+ "forwarder": {
+  "type": "网络设备",
+  "weight": 8,
+  "min_brands": 2
+ },
+ "tcp": [
+  {
+   "id": "tcp.win",
+   "mode": "contains",
+   "value": ":mss,nop,ws,nop,nop,sok:",
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 7
+  },
+  {
+   "id": "tcp.apple",
+   "mode": "contains",
+   "value": ":mss,nop,ws,nop,nop,ts,sok,eol:",
+   "brand": "Apple",
+   "weight": 7
+  },
+  {
+   "id": "tcp.linux",
+   "mode": "contains",
+   "value": ":mss,sok,ts,nop,ws:",
+   "os": "Linux",
+   "weight": 6
+  },
+  {
+   "id": "tcp.minimal",
+   "mode": "contains",
+   "value": ":mss:",
+   "type": "嵌入式设备",
+   "weight": 4
+  }
+ ],
+ "ua": [
+  {
+   "id": "ua.dalvik",
+   "mode": "contains",
+   "value": "dalvik/",
+   "os": "Android",
+   "weight": 9
+  },
+  {
+   "id": "ua.androidua",
+   "mode": "contains",
+   "value": "android ",
+   "os": "Android",
+   "weight": 8,
+   "kind": "web"
+  },
+  {
+   "id": "ua.winnt",
+   "mode": "contains",
+   "value": "windows nt",
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 9,
+   "kind": "web"
+  },
+  {
+   "id": "ua.iphone",
+   "mode": "contains",
+   "value": "iphone",
+   "brand": "Apple",
+   "os": "iOS",
+   "type": "手机",
+   "weight": 9,
+   "kind": "web"
+  },
+  {
+   "id": "ua.ipad",
+   "mode": "contains",
+   "value": "ipad",
+   "brand": "Apple",
+   "os": "iPadOS",
+   "weight": 9,
+   "kind": "web"
+  },
+  {
+   "id": "ua.mac",
+   "mode": "contains",
+   "value": "macintosh",
+   "brand": "Apple",
+   "os": "macOS",
+   "type": "电脑",
+   "weight": 9,
+   "kind": "web"
+  },
+  {
+   "id": "ua.cfnetwork",
+   "mode": "contains",
+   "value": "cfnetwork",
+   "brand": "Apple",
+   "weight": 7
+  },
+  {
+   "id": "ua.curl",
+   "mode": "contains",
+   "value": "curl/",
+   "os": "Linux",
+   "weight": 4,
+   "kind": "web"
+  },
+  {
+   "id": "ua.wget",
+   "mode": "contains",
+   "value": "wget/",
+   "os": "Linux",
+   "weight": 4,
+   "kind": "web"
+  },
+  {
+   "id": "ua.aptget",
+   "mode": "contains",
+   "value": "debian apt-http",
+   "os": "Debian 系",
+   "weight": 10
+  },
+  {
+   "id": "ua.esp",
+   "mode": "contains",
+   "value": "esp8266",
+   "brand": "Espressif",
+   "type": "IoT 模块",
+   "weight": 9
+  },
+  {
+   "id": "ua.esp32",
+   "mode": "contains",
+   "value": "esp32",
+   "brand": "Espressif",
+   "type": "IoT 模块",
+   "weight": 9
+  }
+ ],
+ "port": [
+  {
+   "id": "port.pve",
+   "port": 8006,
+   "os": "Proxmox VE",
+   "type": "服务器",
+   "platform": "Proxmox 宿主机",
+   "weight": 10
+  },
+  {
+   "id": "port.pbs",
+   "port": 8007,
+   "os": "Proxmox Backup Server",
+   "type": "服务器",
+   "weight": 10
+  },
+  {
+   "id": "port.esxi",
+   "port": 902,
+   "os": "VMware ESXi",
+   "type": "服务器",
+   "platform": "ESXi 宿主机",
+   "weight": 10
+  },
+  {
+   "id": "port.cockpit",
+   "port": 9090,
+   "os": "Linux",
+   "type": "服务器",
+   "weight": 6
+  },
+  {
+   "id": "port.nfs",
+   "port": 2049,
+   "os": "Linux",
+   "type": "服务器",
+   "weight": 5
+  },
+  {
+   "id": "port.rpcbind",
+   "port": 111,
+   "os": "Linux",
+   "weight": 3
+  },
+  {
+   "id": "port.iscsi",
+   "port": 3260,
+   "type": "NAS",
+   "weight": 5
+  },
+  {
+   "id": "port.rsync",
+   "port": 873,
+   "os": "Linux",
+   "weight": 3
+  },
+  {
+   "id": "port.msrpc",
+   "port": 135,
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 8
+  },
+  {
+   "id": "port.rdp",
+   "port": 3389,
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 8
+  },
+  {
+   "id": "port.winrm",
+   "port": 5985,
+   "os": "Windows",
+   "type": "电脑",
+   "weight": 8
+  },
+  {
+   "id": "port.wsd",
+   "port": 5357,
+   "os": "Windows",
+   "weight": 5
+  },
+  {
+   "id": "port.smb",
+   "port": 445,
+   "weight": 2
+  },
+  {
+   "id": "port.nbt",
+   "port": 139,
+   "weight": 2
+  },
+  {
+   "id": "port.dsm",
+   "port": 5000,
+   "weight": 2
+  },
+  {
+   "id": "port.dsm2",
+   "port": 5001,
+   "type": "NAS",
+   "weight": 3
+  },
+  {
+   "id": "port.plex",
+   "port": 32400,
+   "type": "NAS",
+   "weight": 6
+  },
+  {
+   "id": "port.jellyfin",
+   "port": 8096,
+   "type": "NAS",
+   "weight": 6
+  },
+  {
+   "id": "port.afp",
+   "port": 548,
+   "brand": "Apple",
+   "type": "NAS",
+   "weight": 6
+  },
+  {
+   "id": "port.daap",
+   "port": 3689,
+   "brand": "Apple",
+   "weight": 5
+  },
+  {
+   "id": "port.rtsp",
+   "port": 554,
+   "type": "摄像头",
+   "weight": 7
+  },
+  {
+   "id": "port.hik",
+   "port": 8000,
+   "weight": 2
+  },
+  {
+   "id": "port.ipp",
+   "port": 631,
+   "type": "打印机",
+   "weight": 7
+  },
+  {
+   "id": "port.jetdirect",
+   "port": 9100,
+   "type": "打印机",
+   "weight": 7
+  },
+  {
+   "id": "port.lpd",
+   "port": 515,
+   "type": "打印机",
+   "weight": 6
+  },
+  {
+   "id": "port.hass",
+   "port": 8123,
+   "type": "智能家居",
+   "weight": 7
+  },
+  {
+   "id": "port.mqtt",
+   "port": 1883,
+   "type": "智能家居",
+   "weight": 6
+  },
+  {
+   "id": "port.adb",
+   "port": 5555,
+   "os": "Android",
+   "weight": 7
+  },
+  {
+   "id": "port.dns",
+   "port": 53,
+   "type": "网络设备",
+   "weight": 6
+  },
+  {
+   "id": "port.tr069",
+   "port": 7547,
+   "type": "网络设备",
+   "weight": 8
+  },
+  {
+   "id": "port.telnet",
+   "port": 23,
+   "weight": 2
+  },
+  {
+   "id": "port.ssh",
+   "port": 22,
+   "weight": 1
+  },
+  {
+   "id": "port.vnc",
+   "port": 5900,
+   "weight": 2
+  },
+  {
+   "id": "port.https",
+   "port": 443,
+   "weight": 1
+  },
+  {
+   "id": "port.https8443",
+   "port": 8443,
+   "weight": 1
+  }
+ ],
+ "banner": [
+  {
+   "id": "ban.ubuntu",
+   "mode": "contains",
+   "value": "ubuntu",
+   "os": "Ubuntu",
+   "weight": 10
+  },
+  {
+   "id": "ban.debian",
+   "mode": "contains",
+   "value": "debian",
+   "os": "Debian",
+   "weight": 10
+  },
+  {
+   "id": "ban.pve",
+   "mode": "contains",
+   "value": "pve",
+   "os": "Proxmox VE",
+   "platform": "Proxmox 宿主机",
+   "weight": 10
+  },
+  {
+   "id": "ban.raspbian",
+   "mode": "contains",
+   "value": "raspbian",
+   "brand": "Raspberry Pi",
+   "os": "Raspberry Pi OS",
+   "weight": 10
+  },
+  {
+   "id": "ban.openwrt",
+   "mode": "contains",
+   "value": "openwrt",
+   "os": "OpenWrt",
+   "type": "路由器",
+   "weight": 10
+  },
+  {
+   "id": "ban.dropbear",
+   "mode": "contains",
+   "value": "dropbear",
+   "os": "Linux",
+   "type": "路由器",
+   "weight": 8
+  },
+  {
+   "id": "ban.freebsd",
+   "mode": "contains",
+   "value": "freebsd",
+   "os": "FreeBSD",
+   "weight": 10
+  },
+  {
+   "id": "ban.synology",
+   "mode": "contains",
+   "value": "synology",
+   "brand": "群晖",
+   "type": "NAS",
+   "weight": 10
+  },
+  {
+   "id": "ban.openssh",
+   "mode": "contains",
+   "value": "openssh",
+   "os": "Linux",
+   "weight": 3
+  },
+  {
+   "id": "ban.iis",
+   "mode": "contains",
+   "value": "microsoft-iis",
+   "os": "Windows",
+   "weight": 9
+  },
+  {
+   "id": "ban.hikvision",
+   "mode": "contains",
+   "value": "hikvision",
+   "brand": "海康/萤石",
+   "type": "摄像头",
+   "weight": 9
+  },
+  {
+   "id": "ban.dahua",
+   "mode": "contains",
+   "value": "dahua",
+   "brand": "大华",
+   "type": "摄像头",
+   "weight": 9
+  },
+  {
+   "id": "web.luci",
+   "mode": "contains",
+   "value": "cgi-bin/luci",
+   "os": "OpenWrt",
+   "type": "路由器",
+   "weight": 10
+  },
+  {
+   "id": "web.openwrt",
+   "mode": "contains",
+   "value": "openwrt",
+   "os": "OpenWrt",
+   "type": "路由器",
+   "weight": 10
+  },
+  {
+   "id": "web.uhttpd",
+   "mode": "contains",
+   "value": "uhttpd",
+   "type": "路由器",
+   "weight": 4
+  },
+  {
+   "id": "web.miwifi",
+   "mode": "contains",
+   "value": "miwifi",
+   "brand": "小米",
+   "type": "路由器",
+   "weight": 10
+  },
+  {
+   "id": "web.xiaomirouter",
+   "mode": "contains",
+   "value": "小米路由",
+   "brand": "小米",
+   "type": "路由器",
+   "weight": 10
+  },
+  {
+   "id": "web.tplink",
+   "mode": "contains",
+   "value": "tp-link",
+   "brand": "TP-LINK",
+   "type": "路由器",
+   "weight": 9
+  },
+  {
+   "id": "web.tplink2",
+   "mode": "contains",
+   "value": "tl-wr",
+   "brand": "TP-LINK",
+   "type": "路由器",
+   "weight": 9
+  },
+  {
+   "id": "web.mercury",
+   "mode": "contains",
+   "value": "mercury",
+   "brand": "水星",
+   "type": "路由器",
+   "weight": 9
+  },
+  {
+   "id": "web.tenda",
+   "mode": "contains",
+   "value": "tenda",
+   "brand": "腾达",
+   "type": "路由器",
+   "weight": 9
+  },
+  {
+   "id": "web.hihonor",
+   "mode": "contains",
+   "value": "huawei",
+   "brand": "华为",
+   "type": "路由器",
+   "weight": 8
+  },
+  {
+   "id": "web.asus",
+   "mode": "contains",
+   "value": "asus",
+   "brand": "华硕",
+   "type": "路由器",
+   "weight": 8
+  },
+  {
+   "id": "web.netgear",
+   "mode": "contains",
+   "value": "netgear",
+   "brand": "NETGEAR",
+   "type": "路由器",
+   "weight": 9
+  },
+  {
+   "id": "web.padavan",
+   "mode": "contains",
+   "value": "padavan",
+   "os": "Padavan",
+   "type": "路由器",
+   "weight": 10
+  },
+  {
+   "id": "web.ikuai",
+   "mode": "contains",
+   "value": "ikuai",
+   "brand": "爱快",
+   "type": "路由器",
+   "weight": 10
+  },
+  {
+   "id": "web.ros",
+   "mode": "contains",
+   "value": "routeros",
+   "os": "RouterOS",
+   "type": "路由器",
+   "weight": 10
+  },
+  {
+   "id": "web.tr069cpe",
+   "mode": "contains",
+   "value": "cwmp",
+   "type": "网络设备",
+   "weight": 6
+  },
+  {
+   "id": "web.goahead",
+   "mode": "contains",
+   "value": "goahead",
+   "type": "摄像头",
+   "weight": 3
+  },
+  {
+   "id": "web.hikweb",
+   "mode": "contains",
+   "value": "ds-2cd",
+   "brand": "海康/萤石",
+   "type": "摄像头",
+   "weight": 9
+  },
+  {
+   "id": "web.dahuaweb",
+   "mode": "contains",
+   "value": "dh-",
+   "brand": "大华",
+   "type": "摄像头",
+   "weight": 7
+  },
+  {
+   "id": "web.printer",
+   "mode": "contains",
+   "value": "hp laserjet",
+   "brand": "惠普",
+   "type": "打印机",
+   "weight": 9
+  },
+  {
+   "id": "web.esphome",
+   "mode": "contains",
+   "value": "esphome",
+   "brand": "Espressif",
+   "type": "智能家居",
+   "weight": 9
+  },
+  {
+   "id": "web.hassio",
+   "mode": "contains",
+   "value": "home assistant",
+   "type": "智能家居",
+   "weight": 10
+  },
+  {
+   "id": "web.ipc",
+   "mode": "contains",
+   "value": "title=ipc",
+   "type": "摄像头",
+   "weight": 8
+  },
+  {
+   "id": "web.pikvm",
+   "mode": "contains",
+   "value": "pikvm",
+   "brand": "PiKVM",
+   "type": "单板机",
+   "weight": 10
+  }
+ ],
+ "subsume": [
+  {
+   "specific": "Proxmox VE",
+   "generic": "Debian"
+  },
+  {
+   "specific": "Proxmox VE",
+   "generic": "Debian 系"
+  },
+  {
+   "specific": "Proxmox VE",
+   "generic": "Linux"
+  },
+  {
+   "specific": "Debian",
+   "generic": "Debian 系"
+  },
+  {
+   "specific": "Debian",
+   "generic": "Linux"
+  },
+  {
+   "specific": "Ubuntu",
+   "generic": "Debian 系"
+  },
+  {
+   "specific": "Ubuntu",
+   "generic": "Linux"
+  },
+  {
+   "specific": "Raspberry Pi OS",
+   "generic": "Linux"
+  },
+  {
+   "specific": "OpenWrt",
+   "generic": "Linux"
+  },
+  {
+   "specific": "Fedora",
+   "generic": "Linux"
+  },
+  {
+   "specific": "Arch Linux",
+   "generic": "Linux"
+  },
+  {
+   "specific": "Android",
+   "generic": "Linux"
+  },
+  {
+   "specific": "MIUI/澎湃",
+   "generic": "Android"
+  },
+  {
+   "specific": "OriginOS",
+   "generic": "Android"
+  },
+  {
+   "specific": "ColorOS",
+   "generic": "Android"
+  },
+  {
+   "specific": "HarmonyOS/EMUI",
+   "generic": "Android"
+  },
+  {
+   "specific": "iOS",
+   "generic": "iOS/macOS"
+  },
+  {
+   "specific": "macOS",
+   "generic": "iOS/macOS"
+  },
+  {
+   "specific": "iPadOS",
+   "generic": "iOS/macOS"
+  },
+  {
+   "specific": "Proxmox Backup Server",
+   "generic": "Debian"
+  },
+  {
+   "specific": "PiKVM",
+   "generic": "Raspberry Pi"
+  },
+  {
+   "specific": "Arch Linux ARM",
+   "generic": "Arch Linux"
+  },
+  {
+   "specific": "Arch Linux ARM",
+   "generic": "Linux"
+  },
+  {
+   "specific": "Raspberry Pi OS",
+   "generic": "Debian"
+  },
+  {
+   "specific": "向日葵",
+   "generic": "Espressif"
+  },
+  {
+   "specific": "Shelly",
+   "generic": "Espressif"
+  },
+  {
+   "specific": "Tasmota",
+   "generic": "Espressif"
+  },
+  {
+   "specific": "涂鸦(白牌)",
+   "generic": "Espressif"
+  },
+  {
+   "specific": "博联",
+   "generic": "Espressif"
+  },
+  {
+   "specific": "小米",
+   "generic": "Espressif"
+  },
+  {
+   "specific": "天猫精灵",
+   "generic": "Espressif"
+  },
+  {
+   "specific": "小度",
+   "generic": "Espressif"
+  },
+  {
+   "specific": "智能家电",
+   "generic": "嵌入式设备"
+  },
+  {
+   "specific": "智能家居",
+   "generic": "嵌入式设备"
+  },
+  {
+   "specific": "摄像头",
+   "generic": "嵌入式设备"
+  },
+  {
+   "specific": "打印机",
+   "generic": "嵌入式设备"
+  },
+  {
+   "specific": "IoT 模块",
+   "generic": "嵌入式设备"
+  },
+  {
+   "specific": "智能插座",
+   "generic": "嵌入式设备"
+  },
+  {
+   "specific": "路由器",
+   "generic": "嵌入式设备"
+  },
+  {
+   "specific": "网络设备",
+   "generic": "嵌入式设备"
+  },
+  {
+   "specific": "嵌入式 Linux",
+   "generic": "Linux"
+  },
+  {
+   "specific": "OpenWrt",
+   "generic": "嵌入式 Linux"
+  }
+ ],
+ "penalty": [
+  {
+   "id": "pen.privport.phone",
+   "cond": "privileged_port",
+   "type": "手机",
+   "weight": -12,
+   "soften_brands": [
+    "小米",
+    "Redmi",
+    "一加",
+    "OnePlus",
+    "Google",
+    "Google Nest",
+    "索尼",
+    "摩托罗拉",
+    "realme",
+    "魅族",
+    "努比亚"
+   ],
+   "soften_weight": -3
+  },
+  {
+   "id": "pen.privport.pad",
+   "cond": "privileged_port",
+   "type": "平板",
+   "weight": -8,
+   "soften_brands": [
+    "小米",
+    "Redmi",
+    "一加",
+    "OnePlus",
+    "Google",
+    "Google Nest",
+    "索尼",
+    "摩托罗拉",
+    "realme",
+    "魅族",
+    "努比亚"
+   ],
+   "soften_weight": -2
+  }
+ ],
+ "peer": [
+  {
+   "id": "peer.apns",
+   "port": 5223,
+   "proto": "tcp",
+   "brand": "Apple",
+   "weight": 8
+  },
+  {
+   "id": "peer.fcm",
+   "port": 5228,
+   "proto": "tcp",
+   "os": "Android",
+   "kind": "weak",
+   "weight": 6
+  },
+  {
+   "id": "peer.fcm2",
+   "port": 5229,
+   "proto": "tcp",
+   "os": "Android",
+   "kind": "weak",
+   "weight": 5
+  },
+  {
+   "id": "peer.fcm3",
+   "port": 5230,
+   "proto": "tcp",
+   "os": "Android",
+   "kind": "weak",
+   "weight": 5
+  },
+  {
+   "id": "peer.oray",
+   "port": 12312,
+   "proto": "udp",
+   "brand": "向日葵",
+   "type": "智能家居",
+   "weight": 7
+  },
+  {
+   "id": "peer.rustdesk",
+   "port": 21116,
+   "proto": "udp",
+   "type": "电脑",
+   "kind": "weak",
+   "weight": 4
+  },
+  {
+   "id": "peer.rustdesk2",
+   "port": 21117,
+   "proto": "tcp",
+   "type": "电脑",
+   "kind": "weak",
+   "weight": 4
+  },
+  {
+   "id": "peer.mqtts",
+   "port": 8883,
+   "proto": "tcp",
+   "type": "智能家居",
+   "kind": "weak",
+   "weight": 4
+  },
+  {
+   "id": "peer.midea",
+   "port": 28443,
+   "proto": "tcp",
+   "brand": "美的",
+   "type": "智能家电",
+   "weight": 6
+  },
+  {
+   "id": "peer.mqtt",
+   "port": 1883,
+   "proto": "tcp",
+   "type": "智能家居",
+   "kind": "weak",
+   "weight": 5
+  },
+  {
+   "id": "peer.coap",
+   "port": 5683,
+   "proto": "udp",
+   "type": "智能家居",
+   "weight": 7
+  },
+  {
+   "id": "peer.coaps",
+   "port": 5684,
+   "proto": "udp",
+   "type": "智能家居",
+   "weight": 7
+  },
+  {
+   "id": "peer.lwm2m",
+   "port": 5685,
+   "proto": "udp",
+   "type": "智能家居",
+   "weight": 6
+  }
+ ],
+ "mqtt": [
+  {
+   "id": "mq.tasmota",
+   "mode": "contains",
+   "value": "tasmota",
+   "brand": "Tasmota",
+   "type": "智能家居",
+   "weight": 10
+  },
+  {
+   "id": "mq.shelly",
+   "mode": "contains",
+   "value": "shelly",
+   "brand": "Shelly",
+   "type": "智能家居",
+   "weight": 10
+  },
+  {
+   "id": "mq.sonoff",
+   "mode": "contains",
+   "value": "sonoff",
+   "brand": "Sonoff",
+   "type": "智能家居",
+   "weight": 10
+  },
+  {
+   "id": "mq.ewelink",
+   "mode": "contains",
+   "value": "ewelink",
+   "brand": "Sonoff",
+   "type": "智能家居",
+   "weight": 9
+  },
+  {
+   "id": "mq.tuya",
+   "mode": "contains",
+   "value": "tuya",
+   "brand": "涂鸦(白牌)",
+   "type": "智能家居",
+   "weight": 9
+  },
+  {
+   "id": "mq.esphome",
+   "mode": "contains",
+   "value": "esphome",
+   "brand": "ESPHome",
+   "type": "IoT 模块",
+   "weight": 10
+  },
+  {
+   "id": "mq.esp",
+   "mode": "contains",
+   "value": "esp_",
+   "brand": "Espressif",
+   "type": "IoT 模块",
+   "weight": 7
+  },
+  {
+   "id": "mq.midea",
+   "mode": "contains",
+   "value": "midea",
+   "brand": "美的",
+   "type": "智能家电",
+   "weight": 9
+  },
+  {
+   "id": "mq.hass",
+   "mode": "contains",
+   "value": "homeassistant",
+   "brand": "",
+   "type": "智能家居",
+   "weight": 8
+  },
+  {
+   "id": "mq.zigbee2mqtt",
+   "mode": "contains",
+   "value": "zigbee2mqtt",
+   "brand": "",
+   "type": "智能家居",
+   "weight": 9
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+#!/bin/sh
+[ -n "$IPKG_INSTROOT" ] || {
+	rm -f /tmp/whohere-dns.log /tmp/whohere.status.json /tmp/whohere.cmd 2>/dev/null
+	# 设备档案与 OUI 库故意保留, 重装后不用重新学一遍。
+	# 要彻底清除: rm -rf /etc/whohere /usr/share/whohere
+}
+exit 0

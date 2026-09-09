@@ -1,0 +1,188 @@
+#!/bin/sh /etc/rc.common
+
+USE_PROCD=1
+START=96
+STOP=10
+
+HOOK="/usr/share/whohere/dhcp-hook.sh"
+FW_SEC="whohere_forcedns"
+FW_DOT="whohere_blockdot"
+
+# --- dnsmasq 布线 -------------------------------------------------------
+# 只有在用户没自己配过的时候才接管, 已有配置一律让路并记录下来, 免得把别人
+# 的 dhcp-script / 日志设置踩掉。原值存在 whohere.backup 里, 卸载时还原。
+setup_dnsmasq() {
+	local want_log="$1" want_hook="$2"
+	local sec cur_lf cur_ds changed=0
+
+	sec="$(uci -q show dhcp | sed -n 's/^dhcp\.\(@dnsmasq\[[0-9]*\]\)=dnsmasq$/\1/p' | head -1)"
+	[ -n "$sec" ] || return 1
+
+	uci -q get whohere.backup >/dev/null 2>&1 || {
+		uci -q set whohere.backup=backup
+		uci -q set whohere.backup.logqueries="$(uci -q get dhcp.$sec.logqueries)"
+		uci -q set whohere.backup.logfacility="$(uci -q get dhcp.$sec.logfacility)"
+		uci -q set whohere.backup.dhcpscript="$(uci -q get dhcp.$sec.dhcpscript)"
+		uci -q commit whohere
+	}
+
+	if [ "$want_log" = "1" ]; then
+		cur_lf="$(uci -q get dhcp.$sec.logfacility)"
+		if [ -z "$cur_lf" ]; then
+			# 提醒: logfacility 会把 dnsmasq 的全部日志(含 DHCP)从 syslog 挪到这个文件
+			uci -q set dhcp.$sec.logfacility="$(uci -q get whohere.global.dns_log)"
+			changed=1
+		elif [ "$cur_lf" != "$(uci -q get whohere.global.dns_log)" ]; then
+			# 用户已经有自己的日志文件了, 那就读他的, 不改配置
+			uci -q set whohere.global.dns_log="$cur_lf"
+			uci -q commit whohere
+		fi
+		[ "$(uci -q get dhcp.$sec.logqueries)" = "1" ] || {
+			uci -q set dhcp.$sec.logqueries=1; changed=1
+		}
+	fi
+
+	if [ "$want_hook" = "1" ]; then
+		cur_ds="$(uci -q get dhcp.$sec.dhcpscript)"
+		if [ -z "$cur_ds" ]; then
+			uci -q set dhcp.$sec.dhcpscript="$HOOK"; changed=1
+		elif [ "$cur_ds" != "$HOOK" ]; then
+			logger -t whohere "dhcpscript 已被 $cur_ds 占用, 跳过 DHCP 指纹接管"
+		fi
+	fi
+
+	[ "$changed" = "1" ] && { uci -q commit dhcp; /etc/init.d/dnsmasq reload >/dev/null 2>&1; }
+	return 0
+}
+
+restore_dnsmasq() {
+	local sec v
+	sec="$(uci -q show dhcp | sed -n 's/^dhcp\.\(@dnsmasq\[[0-9]*\]\)=dnsmasq$/\1/p' | head -1)"
+	[ -n "$sec" ] || return 0
+	uci -q get whohere.backup >/dev/null 2>&1 || return 0
+	for k in logqueries logfacility dhcpscript; do
+		v="$(uci -q get whohere.backup.$k)"
+		if [ -n "$v" ]; then uci -q set dhcp.$sec.$k="$v"; else uci -q delete dhcp.$sec.$k; fi
+	done
+	uci -q commit dhcp
+	uci -q delete whohere.backup; uci -q commit whohere
+	/etc/init.d/dnsmasq reload >/dev/null 2>&1
+}
+
+# --- 可选的 DNS 强制回本地 ----------------------------------------------
+# 只能治"自己填了 8.8.8.8"的设备。治不了 DoH —— 那是 443 上的普通 HTTPS,
+# 除非按 IP 名单封杀, 而那会误伤, 所以本包不做。
+sync_firewall() {
+	local force zone dot
+	force="$(uci -q get whohere.global.force_dns)"
+	zone="$(uci -q get whohere.global.force_dns_zone)"; [ -n "$zone" ] || zone=lan
+	dot="$(uci -q get whohere.global.block_dot)"
+
+	if [ "$force" = "1" ]; then
+		uci -q batch <<-EOF
+			set firewall.$FW_SEC=redirect
+			set firewall.$FW_SEC.name='Whohere-force-dns'
+			set firewall.$FW_SEC.src='$zone'
+			set firewall.$FW_SEC.src_dport='53'
+			set firewall.$FW_SEC.dest_port='53'
+			set firewall.$FW_SEC.proto='tcp udp'
+			set firewall.$FW_SEC.target='DNAT'
+			set firewall.$FW_SEC.family='any'
+		EOF
+	else
+		uci -q delete firewall.$FW_SEC
+	fi
+
+	if [ "$dot" = "1" ]; then
+		uci -q batch <<-EOF
+			set firewall.$FW_DOT=rule
+			set firewall.$FW_DOT.name='Whohere-block-dot'
+			set firewall.$FW_DOT.src='$zone'
+			set firewall.$FW_DOT.dest='*'
+			set firewall.$FW_DOT.dest_port='853'
+			set firewall.$FW_DOT.proto='tcp udp'
+			set firewall.$FW_DOT.target='REJECT'
+		EOF
+	else
+		uci -q delete firewall.$FW_DOT
+	fi
+
+	uci -q commit firewall
+	/etc/init.d/firewall reload >/dev/null 2>&1
+}
+
+clear_firewall() {
+	uci -q delete firewall.$FW_SEC
+	uci -q delete firewall.$FW_DOT
+	uci -q commit firewall
+	/etc/init.d/firewall reload >/dev/null 2>&1
+}
+
+# 每月拉一次 IEEE OUI 表。包里已经带了构建时的官方快照, 这只是保鲜。
+sync_cron() {
+	local cronfile=/etc/crontabs/root
+	local line="30 4 1 * * /usr/share/whohere/update-oui.sh >/dev/null 2>&1"
+	touch "$cronfile"
+	if [ "$(uci -q get whohere.global.oui_auto_update)" = "1" ]; then
+		grep -qF "update-oui.sh" "$cronfile" || echo "$line" >> "$cronfile"
+	else
+		sed -i '/whohere\/update-oui.sh/d' "$cronfile"
+	fi
+	/etc/init.d/cron reload >/dev/null 2>&1
+}
+
+start_service() {
+	local src log
+
+	sync_firewall
+	sync_cron
+	[ "$(uci -q get whohere.global.enabled)" = "1" ] || return 0
+
+	src="$(uci -q get whohere.global.dns_source)"
+	log="$(uci -q get whohere.global.dns_log)"
+	[ -n "$log" ] || log=/tmp/whohere-dns.log
+
+	# 日志文件必须先存在: dnsmasq 的 init 会把它 bind 进 jail, 文件不在就挂不进去
+	case "$src" in
+		auto|dnsmasq_log)
+			[ -e "$log" ] || : > "$log"
+			[ "$(uci -q get whohere.global.manage_dnsmasq)" = "1" ] && \
+				setup_dnsmasq 1 "$(uci -q get whohere.global.dhcp_fingerprint)"
+			;;
+		*)
+			[ "$(uci -q get whohere.global.manage_dnsmasq)" = "1" ] && \
+				setup_dnsmasq 0 "$(uci -q get whohere.global.dhcp_fingerprint)"
+			;;
+	esac
+
+	mkdir -p /etc/whohere
+
+	procd_open_instance
+	procd_set_param command /usr/bin/whohere daemon
+	procd_set_param respawn 3600 5 0
+	procd_set_param stdout 1
+	procd_set_param stderr 1
+	procd_close_instance
+}
+
+stop_service() {
+	# 二进制自己会在 SIGTERM 时把设备档案落盘, 这里不用额外动作
+	:
+}
+
+service_triggers() {
+	procd_add_reload_trigger "whohere"
+}
+
+reload_service() {
+	stop
+	start
+}
+
+# 供 prerm 调用
+cleanup() {
+	restore_dnsmasq
+	clear_firewall
+	sed -i '/whohere\/update-oui.sh/d' /etc/crontabs/root 2>/dev/null
+	/etc/init.d/cron reload >/dev/null 2>&1
+}
